@@ -156,7 +156,7 @@ class NewAddressViewController: UIViewController, UITableViewDelegate, UITableVi
             
         } else {
             //cancel
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
             controller.isAdvisor = true
             self.present(controller, animated: true, completion: nil)

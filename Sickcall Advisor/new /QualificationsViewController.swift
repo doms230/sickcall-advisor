@@ -1,9 +1,9 @@
 //
 //  QualificationsViewController.swift
-//  Sickcall
+//  Sickcall Advisor
 //
-//  Created by Dom Smith on 8/6/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Created by Dominic Smith on 10/23/17.
+//  Copyright © 2017 Sickcall LLC. All rights reserved.
 //
 
 import UIKit
@@ -123,9 +123,9 @@ class QualificationsViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         licenseText.becomeFirstResponder()
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let desti = segue.destination as! IDViewController
         desti.firstName = firstName
@@ -133,7 +133,7 @@ class QualificationsViewController: UIViewController, UIPickerViewDelegate, UIPi
         desti.licenseNumber = licenseText.text!
         desti.state = stateButton.titleLabel?.text!
     }
- 
+    
     @objc func nextAction(_ sender: UIBarButtonItem){
         if validateLicenseNumber() && validateStateButton(){
             performSegue(withIdentifier: "showId", sender: self)
@@ -194,18 +194,18 @@ class QualificationsViewController: UIViewController, UIPickerViewDelegate, UIPi
         stateButton.setTitleColor(.black, for: .normal)
         
         if states[row] != ""{
-            didChooseState = true 
+            didChooseState = true
         }
     }
     
-    //validation tests 
+    //validation tests
     func validateLicenseNumber() ->Bool{
         var isValidated = false
         
         if licenseText.text!.isEmpty{
             
             licenseText.attributedPlaceholder = NSAttributedString(string:" Field required",
-                                                                         attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
+                                                                   attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
             
         } else{
             isValidated = true

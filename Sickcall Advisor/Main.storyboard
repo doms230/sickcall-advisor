@@ -1,603 +1,523 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Oa-Fb-TkN">
-<device id="retina5_5" orientation="portrait">
-<adaptation id="fullscreen"/>
-</device>
-<dependencies>
-<deployment identifier="iOS"/>
-<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-<capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-</dependencies>
-<customFonts key="customFonts">
-<array key="HelveticaNeue.ttc">
-<string>HelveticaNeue</string>
-<string>HelveticaNeue-Bold</string>
-</array>
-</customFonts>
-<scenes>
-<!--Advisor Container View Controller-->
-<scene sceneID="exB-8A-pwN">
-<objects>
-<viewController storyboardIdentifier="container" id="3Oa-Fb-TkN" customClass="AdvisorContainerViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="Bxm-oU-bW6"/>
-<viewControllerLayoutGuide type="bottom" id="TEe-oP-EEl"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="UBT-6A-1sO">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-</view>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="e85-5c-W6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-327" y="378"/>
-</scene>
-<!--Advisor Side Bar View Controller-->
-<scene sceneID="rIo-N0-ihe">
-<objects>
-<viewController storyboardIdentifier="sidebar" id="Si7-hA-4d1" customClass="AdvisorSideBarViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="qGc-Sy-mjG"/>
-<viewControllerLayoutGuide type="bottom" id="E4u-nI-mnB"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="9QJ-So-xnI">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZa-JO-v6V">
-<rect key="frame" x="0.0" y="686" width="414" height="50"/>
-<color key="backgroundColor" red="0.08235294118" green="0.57647058819999997" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
-<constraints>
-<constraint firstAttribute="height" constant="50" id="zgI-oP-kxL"/>
-</constraints>
-<fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-<state key="normal" title="Switch to Patient">
-<color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-</state>
-<connections>
-<action selector="switchAction:" destination="Si7-hA-4d1" eventType="touchUpInside" id="CGn-xB-anc"/>
-</connections>
-</button>
-<imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vAG-hs-wID">
-<rect key="frame" x="20" y="28" width="100" height="100"/>
-<constraints>
-<constraint firstAttribute="height" constant="100" id="SLe-8i-GC8"/>
-<constraint firstAttribute="width" constant="100" id="fZw-2N-Bvb"/>
-</constraints>
-</imageView>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTz-er-IZd">
-<rect key="frame" x="20" y="136" width="53" height="21"/>
-<constraints>
-<constraint firstAttribute="height" constant="21" id="L18-Kp-cRZ"/>
-</constraints>
-<fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-<nil key="textColor"/>
-<nil key="highlightedColor"/>
-</label>
-<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCz-nQ-l4Z">
-<rect key="frame" x="20" y="165" width="374" height="60"/>
-<constraints>
-<constraint firstAttribute="height" constant="60" id="u81-I3-CDG"/>
-</constraints>
-<fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-<state key="normal" title=" Payments" image="money">
-<color key="titleColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-</state>
-<connections>
-<action selector="bankInfoAction:" destination="Si7-hA-4d1" eventType="touchUpInside" id="t09-1o-P4e"/>
-</connections>
-</button>
-</subviews>
-<color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-<constraints>
-<constraint firstAttribute="trailing" secondItem="BZa-JO-v6V" secondAttribute="trailing" id="14L-wM-zew"/>
-<constraint firstItem="GCz-nQ-l4Z" firstAttribute="top" secondItem="RTz-er-IZd" secondAttribute="bottom" constant="8" symbolic="YES" id="Igy-ar-nAv"/>
-<constraint firstItem="vAG-hs-wID" firstAttribute="top" secondItem="qGc-Sy-mjG" secondAttribute="bottom" constant="8" symbolic="YES" id="MAo-AI-Ck3"/>
-<constraint firstItem="BZa-JO-v6V" firstAttribute="bottom" secondItem="E4u-nI-mnB" secondAttribute="top" id="QM3-MV-zU6"/>
-<constraint firstItem="vAG-hs-wID" firstAttribute="leading" secondItem="RTz-er-IZd" secondAttribute="leading" id="Qau-8o-Y0l"/>
-<constraint firstItem="vAG-hs-wID" firstAttribute="leading" secondItem="9QJ-So-xnI" secondAttribute="leadingMargin" id="WLH-8F-ZTb"/>
-<constraint firstItem="BZa-JO-v6V" firstAttribute="leading" secondItem="9QJ-So-xnI" secondAttribute="leading" id="bsC-bT-1Pr"/>
-<constraint firstItem="RTz-er-IZd" firstAttribute="leading" secondItem="GCz-nQ-l4Z" secondAttribute="leading" id="jdP-hv-0Cp"/>
-<constraint firstItem="RTz-er-IZd" firstAttribute="top" secondItem="vAG-hs-wID" secondAttribute="bottom" constant="8" symbolic="YES" id="jv5-FY-5xX"/>
-<constraint firstItem="GCz-nQ-l4Z" firstAttribute="centerX" secondItem="BZa-JO-v6V" secondAttribute="centerX" id="y4B-0t-IDa"/>
-</constraints>
-</view>
-<connections>
-<outlet property="imageJaunt" destination="vAG-hs-wID" id="Mmv-Ed-0ab"/>
-<outlet property="nameJaunt" destination="RTz-er-IZd" id="tBN-6J-SCj"/>
-<outlet property="paymentsButton" destination="GCz-nQ-l4Z" id="kEV-O9-RF4"/>
-<outlet property="switchButton" destination="BZa-JO-v6V" id="gxp-RX-dTL"/>
-<segue destination="XHJ-ea-DOd" kind="show" identifier="showBankInfo" id="mmg-0X-MUi"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="fCJ-iD-H46" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="593" y="395"/>
-</scene>
-<!--Advisor Question View Controller-->
-<scene sceneID="9nb-2t-lm1">
-<objects>
-<viewController id="cfc-fa-eej" customClass="V2AdvisorQuestionViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="u7f-k8-Its"/>
-<viewControllerLayoutGuide type="bottom" id="ecr-ql-8Nq"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="WS1-Lw-OyI">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-<color key="tintColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="deviceRGB"/>
-</view>
-<navigationItem key="navigationItem" id="1n4-Vi-H9g">
-<barButtonItem key="rightBarButtonItem" systemItem="refresh" id="qDd-nh-5hQ">
-<connections>
-<action selector="cancelQuestionAction:" destination="cfc-fa-eej" id="Khi-n8-YER"/>
-</connections>
-</barButtonItem>
-</navigationItem>
-<connections>
-<segue destination="NQ0-zL-oWD" kind="show" identifier="showVitals" id="AFk-9B-6bw"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="Rjf-5C-WmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="2309.5999999999999" y="-278.41079460269867"/>
-</scene>
-<!--Advisor Meds View Controller-->
-<scene sceneID="SMk-xz-A77">
-<objects>
-<viewController id="NQ0-zL-oWD" customClass="AdvisorMedsViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="dtr-Fb-9Of"/>
-<viewControllerLayoutGuide type="bottom" id="nQt-Cd-VGM"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="zeN-Eu-xEV">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-ZT-rfY">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-<color key="sectionIndexBackgroundColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="deviceRGB"/>
-<connections>
-<outlet property="dataSource" destination="NQ0-zL-oWD" id="AsE-qZ-ib8"/>
-<outlet property="delegate" destination="NQ0-zL-oWD" id="Cep-Qw-MZ8"/>
-</connections>
-</tableView>
-</subviews>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-<constraints>
-<constraint firstItem="7k9-ZT-rfY" firstAttribute="leading" secondItem="zeN-Eu-xEV" secondAttribute="leading" id="GUp-XS-OU0"/>
-<constraint firstItem="7k9-ZT-rfY" firstAttribute="bottom" secondItem="nQt-Cd-VGM" secondAttribute="top" id="PKh-Tw-n3N"/>
-<constraint firstAttribute="trailing" secondItem="7k9-ZT-rfY" secondAttribute="trailing" id="X1J-qW-L5Y"/>
-<constraint firstItem="7k9-ZT-rfY" firstAttribute="top" secondItem="zeN-Eu-xEV" secondAttribute="top" id="a2q-9q-t5t"/>
-</constraints>
-</view>
-<connections>
-<outlet property="tableJaunt" destination="7k9-ZT-rfY" id="eRK-P7-fTl"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="cha-yK-uxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="3067" y="-279"/>
-</scene>
-<!--Dashboard View Controller-->
-<scene sceneID="Kgv-GI-duV">
-<objects>
-<viewController id="Tng-9D-d32" customClass="DashboardViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="Ywm-S6-BZQ"/>
-<viewControllerLayoutGuide type="bottom" id="Jes-az-qET"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="M5G-JO-cDR">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-k0-Nbr">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-<connections>
-<outlet property="dataSource" destination="Tng-9D-d32" id="Xfh-pr-OAY"/>
-<outlet property="delegate" destination="Tng-9D-d32" id="Qdu-E3-Z6R"/>
-</connections>
-</tableView>
-</subviews>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-<constraints>
-<constraint firstItem="WW5-k0-Nbr" firstAttribute="bottom" secondItem="Jes-az-qET" secondAttribute="top" id="Hzl-CJ-zmP"/>
-<constraint firstItem="WW5-k0-Nbr" firstAttribute="leading" secondItem="M5G-JO-cDR" secondAttribute="leading" id="Jpm-uA-aJo"/>
-<constraint firstItem="WW5-k0-Nbr" firstAttribute="top" secondItem="M5G-JO-cDR" secondAttribute="top" id="alE-dW-Ekh"/>
-<constraint firstAttribute="trailing" secondItem="WW5-k0-Nbr" secondAttribute="trailing" id="m3u-85-gbv"/>
-</constraints>
-</view>
-<navigationItem key="navigationItem" id="gfq-bX-dDc">
-<barButtonItem key="leftBarButtonItem" image="menu" id="rvk-XQ-ZtM">
-<connections>
-<action selector="menuAction:" destination="Tng-9D-d32" id="WK7-kf-Cyb"/>
-</connections>
-</barButtonItem>
-</navigationItem>
-<connections>
-<outlet property="tableJaunt" destination="WW5-k0-Nbr" id="a2c-5E-yGy"/>
-<segue destination="2v9-QC-5FS" kind="show" identifier="showNewBank" id="UkY-yN-A5y"/>
-<segue destination="XHJ-ea-DOd" kind="show" identifier="showBank" id="DRr-Ok-1jm"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="hYg-r1-CVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="2310" y="377"/>
-</scene>
-<!--Questions-->
-<scene sceneID="95M-Zo-Gxv">
-<objects>
-<navigationController storyboardIdentifier="question" automaticallyAdjustsScrollViewInsets="NO" id="y72-Xc-m9b" sceneMemberID="viewController">
-<tabBarItem key="tabBarItem" title="Questions" image="askQuestion" id="ttE-ba-tLQ"/>
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" id="dhF-4X-6rR">
-<rect key="frame" x="0.0" y="20" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="cfc-fa-eej" kind="relationship" relationship="rootViewController" id="eef-5b-Bl8"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="vGQ-0Z-vtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="1553" y="-278"/>
-</scene>
-<!--Navigation Controller-->
-<scene sceneID="lfn-Dy-0SR">
-<objects>
-<navigationController storyboardIdentifier="dashboard" automaticallyAdjustsScrollViewInsets="NO" id="5A9-Cs-J1d" sceneMemberID="viewController">
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" id="lg7-bD-Alc">
-<rect key="frame" x="0.0" y="20" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="Tng-9D-d32" kind="relationship" relationship="rootViewController" id="Pgc-EG-Ajh"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="dL3-5B-crb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="1553" y="377"/>
-</scene>
-<!--Advisor Welcome View Controller-->
-<scene sceneID="gwr-Y7-EqH">
-<objects>
-<viewController id="KOA-97-IbX" customClass="AdvisorWelcomeViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="4PW-Ex-TGp"/>
-<viewControllerLayoutGuide type="bottom" id="SSq-Kk-tyU"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="Tq4-qx-W4X">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From anywhere, whenever." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ooi-71-eR9">
-<rect key="frame" x="16" y="176" width="284" height="50"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-<nil key="textColor"/>
-<nil key="highlightedColor"/>
-</label>
-<textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Answer Questions with Sickcall" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y58-OG-ROf">
-<rect key="frame" x="16" y="88" width="284" height="80"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-<fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-<textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-</textView>
-</subviews>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<navigationItem key="navigationItem" id="sho-6m-zUb">
-<barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="uxB-QH-d25">
-<connections>
-<action selector="menuAction:" destination="KOA-97-IbX" id="Frm-UG-kph"/>
-</connections>
-</barButtonItem>
-<barButtonItem key="rightBarButtonItem" title="Get Started" id="rsn-hq-acm">
-<connections>
-<segue destination="roc-DS-FVD" kind="show" id="BfV-Ib-HgI"/>
-</connections>
-</barButtonItem>
-</navigationItem>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="hiX-FR-mzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="2378" y="1068"/>
-</scene>
-<!--Name View Controller-->
-<scene sceneID="mzb-p9-E6k">
-<objects>
-<viewController id="roc-DS-FVD" customClass="NameViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="bo1-5B-Z89"/>
-<viewControllerLayoutGuide type="bottom" id="cD2-Mm-uXe"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="D90-Rx-mGl">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392156862744" green="0.90196078431372551" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<navigationItem key="navigationItem" id="eRV-9W-baH">
-<barButtonItem key="rightBarButtonItem" title="Next" id="xeT-uh-Mbq">
-<color key="tintColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-<connections>
-<action selector="nextAction:" destination="roc-DS-FVD" id="ROJ-qu-hNB"/>
-</connections>
-</barButtonItem>
-</navigationItem>
-<connections>
-<segue destination="5DC-lY-Mbg" kind="show" identifier="showLicense" id="ZvU-5R-K1a"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="5MW-wP-xR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="3258" y="1068"/>
-</scene>
-<!--Qualifications View Controller-->
-<scene sceneID="a3o-0X-vjO">
-<objects>
-<viewController id="5DC-lY-Mbg" customClass="QualificationsViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="qNL-bl-f2R"/>
-<viewControllerLayoutGuide type="bottom" id="hoz-Af-osJ"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="7Ng-cY-LQI">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<connections>
-<segue destination="lQA-Dn-EJK" kind="show" identifier="showId" id="Ayb-Sq-Tdm"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="MGc-P8-uYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="4109" y="1068"/>
-</scene>
-<!--View Controller-->
-<scene sceneID="rU3-pe-3di">
-<objects>
-<viewController id="lQA-Dn-EJK" customClass="IDViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="qHw-Vr-Q3P"/>
-<viewControllerLayoutGuide type="bottom" id="JGd-yj-oid"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="5an-Ru-Szt">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="hLv-Bt-lUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="5009" y="1068"/>
-</scene>
-<!--Bank Table View Controller-->
-<scene sceneID="wFg-IL-sbm">
-<objects>
-<tableViewController id="Vnu-gG-xhc" customClass="BankTableViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nfX-B4-Cgz">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-<sections>
-<tableViewSection id="FBk-OA-q7O">
-<cells>
-<tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="7cc-KW-ZoN">
-<rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-<tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7cc-KW-ZoN" id="lsx-yY-SMc">
-<rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-<subviews>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-89-f2s">
-<rect key="frame" x="8" y="0.0" width="67" height="44"/>
-<constraints>
-<constraint firstAttribute="width" constant="67" id="BvQ-hH-22A"/>
-</constraints>
-<fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-<nil key="textColor"/>
-<nil key="highlightedColor"/>
-</label>
-<textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hD6-xT-Z9w">
-<rect key="frame" x="83" y="7" width="323" height="30"/>
-<nil key="textColor"/>
-<fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-<textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-</textField>
-</subviews>
-<constraints>
-<constraint firstItem="3Ye-89-f2s" firstAttribute="centerY" secondItem="hD6-xT-Z9w" secondAttribute="centerY" id="2Jy-aM-TIU"/>
-<constraint firstItem="3Ye-89-f2s" firstAttribute="top" secondItem="lsx-yY-SMc" secondAttribute="top" id="7yh-dy-iJo"/>
-<constraint firstItem="hD6-xT-Z9w" firstAttribute="trailing" secondItem="lsx-yY-SMc" secondAttribute="trailingMargin" id="DbZ-RO-dYr"/>
-<constraint firstItem="3Ye-89-f2s" firstAttribute="leading" secondItem="lsx-yY-SMc" secondAttribute="leadingMargin" id="Jqm-Yr-zXx"/>
-<constraint firstAttribute="bottom" secondItem="3Ye-89-f2s" secondAttribute="bottom" id="pxA-Up-fAi"/>
-<constraint firstItem="hD6-xT-Z9w" firstAttribute="leading" secondItem="3Ye-89-f2s" secondAttribute="trailing" constant="8" symbolic="YES" id="zUz-Xs-ddn"/>
-</constraints>
-</tableViewCellContentView>
-</tableViewCell>
-<tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="aaL-Up-UrH">
-<rect key="frame" x="0.0" y="44" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-<tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aaL-Up-UrH" id="wDe-16-BXd">
-<rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-<subviews>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU2-Ov-nZP">
-<rect key="frame" x="8" y="0.0" width="64" height="44"/>
-<constraints>
-<constraint firstAttribute="width" constant="64" id="no6-Zv-3GZ"/>
-</constraints>
-<fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-<nil key="textColor"/>
-<nil key="highlightedColor"/>
-</label>
-<textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-As-mXT">
-<rect key="frame" x="80" y="7" width="326" height="30"/>
-<nil key="textColor"/>
-<fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-<textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-</textField>
-</subviews>
-<constraints>
-<constraint firstItem="cU2-Ov-nZP" firstAttribute="top" secondItem="wDe-16-BXd" secondAttribute="top" id="2w3-pZ-Od3"/>
-<constraint firstAttribute="bottom" secondItem="cU2-Ov-nZP" secondAttribute="bottom" id="GyG-hv-62k"/>
-<constraint firstItem="4VN-As-mXT" firstAttribute="leading" secondItem="cU2-Ov-nZP" secondAttribute="trailing" constant="8" symbolic="YES" id="HXR-Gd-ocl"/>
-<constraint firstItem="cU2-Ov-nZP" firstAttribute="leading" secondItem="wDe-16-BXd" secondAttribute="leadingMargin" id="lxM-qC-bcd"/>
-<constraint firstItem="4VN-As-mXT" firstAttribute="trailing" secondItem="wDe-16-BXd" secondAttribute="trailingMargin" id="meZ-zV-K1P"/>
-<constraint firstItem="cU2-Ov-nZP" firstAttribute="centerY" secondItem="4VN-As-mXT" secondAttribute="centerY" id="qtk-kN-QFT"/>
-</constraints>
-</tableViewCellContentView>
-</tableViewCell>
-</cells>
-</tableViewSection>
-</sections>
-<connections>
-<outlet property="dataSource" destination="Vnu-gG-xhc" id="lCV-SQ-cbc"/>
-<outlet property="delegate" destination="Vnu-gG-xhc" id="FxD-qj-baY"/>
-</connections>
-</tableView>
-<navigationItem key="navigationItem" id="BE7-JW-lAJ"/>
-<connections>
-<outlet property="accountTextField" destination="hD6-xT-Z9w" id="n8a-d6-zeq"/>
-<outlet property="routingTextField" destination="4VN-As-mXT" id="wgA-OF-b2r"/>
-</connections>
-</tableViewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="v4d-a9-r6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="491" y="1886"/>
-</scene>
-<!--New Bank View Controller-->
-<scene sceneID="TtH-lX-RoI">
-<objects>
-<viewController id="p9x-0f-Nvm" customClass="newBankViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="WbP-mf-ohS"/>
-<viewControllerLayoutGuide type="bottom" id="IaL-gS-AzG"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="KVs-X8-RGe">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<navigationItem key="navigationItem" id="uND-XU-sP7"/>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="qJI-Rb-BPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="5546" y="377"/>
-</scene>
-<!--Navigation Controller-->
-<scene sceneID="E3o-v1-vY0">
-<objects>
-<navigationController automaticallyAdjustsScrollViewInsets="NO" id="XHJ-ea-DOd" sceneMemberID="viewController">
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" id="t4G-Kt-tqE">
-<rect key="frame" x="0.0" y="20" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="Vnu-gG-xhc" kind="relationship" relationship="rootViewController" id="Nec-SO-NVF"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="nn6-GA-uah" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="491" y="1171"/>
-</scene>
-<!--Navigation Controller-->
-<scene sceneID="eXd-Jm-n9p">
-<objects>
-<navigationController storyboardIdentifier="new" automaticallyAdjustsScrollViewInsets="NO" id="GsS-DF-3Z3" sceneMemberID="viewController">
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" id="c9W-8M-Xrh">
-<rect key="frame" x="0.0" y="20" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="KOA-97-IbX" kind="relationship" relationship="rootViewController" id="QNI-nV-XID"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="LnW-lB-7OK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="1552" y="1068"/>
-</scene>
-<!--Navigation Controller-->
-<scene sceneID="h5K-kQ-sTf">
-<objects>
-<navigationController automaticallyAdjustsScrollViewInsets="NO" id="2v9-QC-5FS" sceneMemberID="viewController">
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y2k-u2-s8u">
-<rect key="frame" x="0.0" y="20" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="9OX-2p-kE9" kind="relationship" relationship="rootViewController" id="ZpG-1q-KfD"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="cic-GL-6V4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="3067" y="377"/>
-</scene>
-<!--New Address View Controller-->
-<scene sceneID="8mE-8Y-za2">
-<objects>
-<viewController id="9OX-2p-kE9" customClass="NewAddressViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="8sx-dU-2QW"/>
-<viewControllerLayoutGuide type="bottom" id="cUQ-xW-c1n"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="px0-Hb-02E">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<navigationItem key="navigationItem" id="2qU-EA-bVR"/>
-<connections>
-<segue destination="qdE-nR-9rC" kind="show" identifier="showSSN" id="CM1-Ge-VQ7"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="mCq-oq-UlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="3828" y="377"/>
-</scene>
-<!--NewSSN View Controller-->
-<scene sceneID="Cd3-Tg-ZKT">
-<objects>
-<viewController id="qdE-nR-9rC" customClass="NewSSNViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="2V7-p7-RVW"/>
-<viewControllerLayoutGuide type="bottom" id="xJO-LA-fnJ"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="lCG-vI-le4">
-<rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<connections>
-<segue destination="p9x-0f-Nvm" kind="show" identifier="showBank" id="oUB-Jc-8Im"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="hqi-ZT-aI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="4678" y="360"/>
-</scene>
-</scenes>
-<resources>
-<image name="askQuestion" width="25" height="25"/>
-<image name="menu" width="33" height="33"/>
-<image name="money" width="25" height="25"/>
-</resources>
-<inferredMetricsTieBreakers>
-<segue reference="mmg-0X-MUi"/>
-</inferredMetricsTieBreakers>
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Advisor Container View Controller-->
+        <scene sceneID="exB-8A-pwN">
+            <objects>
+                <viewController storyboardIdentifier="container" id="3Oa-Fb-TkN" customClass="AdvisorContainerViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bxm-oU-bW6"/>
+                        <viewControllerLayoutGuide type="bottom" id="TEe-oP-EEl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UBT-6A-1sO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e85-5c-W6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="532" y="914"/>
+        </scene>
+        <!--Advisor Side Bar View Controller-->
+        <scene sceneID="rIo-N0-ihe">
+            <objects>
+                <viewController storyboardIdentifier="sidebar" id="Si7-hA-4d1" customClass="AdvisorSideBarViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qGc-Sy-mjG"/>
+                        <viewControllerLayoutGuide type="bottom" id="E4u-nI-mnB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9QJ-So-xnI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vAG-hs-wID">
+                                <rect key="frame" x="20" y="28" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="SLe-8i-GC8"/>
+                                    <constraint firstAttribute="width" constant="100" id="fZw-2N-Bvb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTz-er-IZd">
+                                <rect key="frame" x="20" y="136" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="L18-Kp-cRZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCz-nQ-l4Z">
+                                <rect key="frame" x="20" y="165" width="106" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="u81-I3-CDG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title=" Payments" image="money">
+                                    <color key="titleColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bankInfoAction:" destination="Si7-hA-4d1" eventType="touchUpInside" id="t09-1o-P4e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="GCz-nQ-l4Z" firstAttribute="top" secondItem="RTz-er-IZd" secondAttribute="bottom" constant="8" symbolic="YES" id="Igy-ar-nAv"/>
+                            <constraint firstItem="vAG-hs-wID" firstAttribute="top" secondItem="qGc-Sy-mjG" secondAttribute="bottom" constant="8" symbolic="YES" id="MAo-AI-Ck3"/>
+                            <constraint firstItem="vAG-hs-wID" firstAttribute="leading" secondItem="RTz-er-IZd" secondAttribute="leading" id="Qau-8o-Y0l"/>
+                            <constraint firstItem="vAG-hs-wID" firstAttribute="leading" secondItem="9QJ-So-xnI" secondAttribute="leadingMargin" id="WLH-8F-ZTb"/>
+                            <constraint firstItem="RTz-er-IZd" firstAttribute="leading" secondItem="GCz-nQ-l4Z" secondAttribute="leading" id="jdP-hv-0Cp"/>
+                            <constraint firstItem="RTz-er-IZd" firstAttribute="top" secondItem="vAG-hs-wID" secondAttribute="bottom" constant="8" symbolic="YES" id="jv5-FY-5xX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageJaunt" destination="vAG-hs-wID" id="Mmv-Ed-0ab"/>
+                        <outlet property="nameJaunt" destination="RTz-er-IZd" id="tBN-6J-SCj"/>
+                        <outlet property="paymentsButton" destination="GCz-nQ-l4Z" id="kEV-O9-RF4"/>
+                        <segue destination="XHJ-ea-DOd" kind="show" identifier="showBankInfo" id="mmg-0X-MUi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fCJ-iD-H46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="413"/>
+        </scene>
+        <!--Advisor Question View Controller-->
+        <scene sceneID="9nb-2t-lm1">
+            <objects>
+                <viewController id="cfc-fa-eej" customClass="V2AdvisorQuestionViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u7f-k8-Its"/>
+                        <viewControllerLayoutGuide type="bottom" id="ecr-ql-8Nq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WS1-Lw-OyI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1n4-Vi-H9g">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="qDd-nh-5hQ">
+                            <connections>
+                                <action selector="cancelQuestionAction:" destination="cfc-fa-eej" id="Khi-n8-YER"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="NQ0-zL-oWD" kind="show" identifier="showVitals" id="AFk-9B-6bw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rjf-5C-WmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4638" y="1357"/>
+        </scene>
+        <!--Advisor Meds View Controller-->
+        <scene sceneID="SMk-xz-A77">
+            <objects>
+                <viewController id="NQ0-zL-oWD" customClass="AdvisorMedsViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dtr-Fb-9Of"/>
+                        <viewControllerLayoutGuide type="bottom" id="nQt-Cd-VGM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zeN-Eu-xEV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-ZT-rfY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NQ0-zL-oWD" id="AsE-qZ-ib8"/>
+                                    <outlet property="delegate" destination="NQ0-zL-oWD" id="Cep-Qw-MZ8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7k9-ZT-rfY" firstAttribute="leading" secondItem="zeN-Eu-xEV" secondAttribute="leading" id="GUp-XS-OU0"/>
+                            <constraint firstItem="7k9-ZT-rfY" firstAttribute="bottom" secondItem="nQt-Cd-VGM" secondAttribute="top" id="PKh-Tw-n3N"/>
+                            <constraint firstAttribute="trailing" secondItem="7k9-ZT-rfY" secondAttribute="trailing" id="X1J-qW-L5Y"/>
+                            <constraint firstItem="7k9-ZT-rfY" firstAttribute="top" secondItem="zeN-Eu-xEV" secondAttribute="top" id="a2q-9q-t5t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableJaunt" destination="7k9-ZT-rfY" id="eRK-P7-fTl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cha-yK-uxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4638" y="2176"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="Kgv-GI-duV">
+            <objects>
+                <viewController id="Tng-9D-d32" customClass="DashboardViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ywm-S6-BZQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jes-az-qET"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M5G-JO-cDR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-k0-Nbr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Tng-9D-d32" id="Xfh-pr-OAY"/>
+                                    <outlet property="delegate" destination="Tng-9D-d32" id="Qdu-E3-Z6R"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WW5-k0-Nbr" firstAttribute="bottom" secondItem="Jes-az-qET" secondAttribute="top" id="Hzl-CJ-zmP"/>
+                            <constraint firstItem="WW5-k0-Nbr" firstAttribute="leading" secondItem="M5G-JO-cDR" secondAttribute="leading" id="Jpm-uA-aJo"/>
+                            <constraint firstItem="WW5-k0-Nbr" firstAttribute="top" secondItem="M5G-JO-cDR" secondAttribute="top" id="alE-dW-Ekh"/>
+                            <constraint firstAttribute="trailing" secondItem="WW5-k0-Nbr" secondAttribute="trailing" id="m3u-85-gbv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gfq-bX-dDc">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="rvk-XQ-ZtM">
+                            <connections>
+                                <action selector="menuAction:" destination="Tng-9D-d32" id="WK7-kf-Cyb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableJaunt" destination="WW5-k0-Nbr" id="a2c-5E-yGy"/>
+                        <segue destination="XHJ-ea-DOd" kind="show" identifier="showBank" id="DRr-Ok-1jm"/>
+                        <segue destination="oUc-Mt-VBJ" kind="show" identifier="showEditProfile" id="qgy-pM-lfm"/>
+                        <segue destination="roc-DS-FVD" kind="show" identifier="showNewAdvisor" id="OMC-hf-WnM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hYg-r1-CVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2516" y="395"/>
+        </scene>
+        <!--Questions-->
+        <scene sceneID="95M-Zo-Gxv">
+            <objects>
+                <navigationController storyboardIdentifier="question" automaticallyAdjustsScrollViewInsets="NO" id="y72-Xc-m9b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Questions" image="askQuestion" id="ttE-ba-tLQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhF-4X-6rR">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cfc-fa-eej" kind="relationship" relationship="rootViewController" id="eef-5b-Bl8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGQ-0Z-vtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4638" y="377"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lfn-Dy-0SR">
+            <objects>
+                <navigationController storyboardIdentifier="dashboard" automaticallyAdjustsScrollViewInsets="NO" id="5A9-Cs-J1d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lg7-bD-Alc">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Tng-9D-d32" kind="relationship" relationship="rootViewController" id="Pgc-EG-Ajh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dL3-5B-crb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2516" y="-663"/>
+        </scene>
+        <!--Name View Controller-->
+        <scene sceneID="mzb-p9-E6k">
+            <objects>
+                <viewController id="roc-DS-FVD" customClass="NameViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bo1-5B-Z89"/>
+                        <viewControllerLayoutGuide type="bottom" id="cD2-Mm-uXe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D90-Rx-mGl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eRV-9W-baH">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="xeT-uh-Mbq">
+                            <color key="tintColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="nextAction:" destination="roc-DS-FVD" id="ROJ-qu-hNB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="5DC-lY-Mbg" kind="show" identifier="showLicense" id="ZvU-5R-K1a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5MW-wP-xR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2516" y="1392"/>
+        </scene>
+        <!--Qualifications View Controller-->
+        <scene sceneID="a3o-0X-vjO">
+            <objects>
+                <viewController id="5DC-lY-Mbg" customClass="QualificationsViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qNL-bl-f2R"/>
+                        <viewControllerLayoutGuide type="bottom" id="hoz-Af-osJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Ng-cY-LQI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="lQA-Dn-EJK" kind="show" identifier="showId" id="Ayb-Sq-Tdm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGc-P8-uYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2516" y="2176"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rU3-pe-3di">
+            <objects>
+                <viewController id="lQA-Dn-EJK" customClass="IDViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qHw-Vr-Q3P"/>
+                        <viewControllerLayoutGuide type="bottom" id="JGd-yj-oid"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5an-Ru-Szt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hLv-Bt-lUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2516" y="2908"/>
+        </scene>
+        <!--Bank Table View Controller-->
+        <scene sceneID="wFg-IL-sbm">
+            <objects>
+                <tableViewController id="Vnu-gG-xhc" customClass="BankTableViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nfX-B4-Cgz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="FBk-OA-q7O">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="7cc-KW-ZoN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7cc-KW-ZoN" id="lsx-yY-SMc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-89-f2s">
+                                                    <rect key="frame" x="8" y="0.0" width="67" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="67" id="BvQ-hH-22A"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hD6-xT-Z9w">
+                                                    <rect key="frame" x="83" y="7" width="323" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3Ye-89-f2s" firstAttribute="centerY" secondItem="hD6-xT-Z9w" secondAttribute="centerY" id="2Jy-aM-TIU"/>
+                                                <constraint firstItem="3Ye-89-f2s" firstAttribute="top" secondItem="lsx-yY-SMc" secondAttribute="top" id="7yh-dy-iJo"/>
+                                                <constraint firstItem="hD6-xT-Z9w" firstAttribute="trailing" secondItem="lsx-yY-SMc" secondAttribute="trailingMargin" id="DbZ-RO-dYr"/>
+                                                <constraint firstItem="3Ye-89-f2s" firstAttribute="leading" secondItem="lsx-yY-SMc" secondAttribute="leadingMargin" id="Jqm-Yr-zXx"/>
+                                                <constraint firstAttribute="bottom" secondItem="3Ye-89-f2s" secondAttribute="bottom" id="pxA-Up-fAi"/>
+                                                <constraint firstItem="hD6-xT-Z9w" firstAttribute="leading" secondItem="3Ye-89-f2s" secondAttribute="trailing" constant="8" symbolic="YES" id="zUz-Xs-ddn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="aaL-Up-UrH">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aaL-Up-UrH" id="wDe-16-BXd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU2-Ov-nZP">
+                                                    <rect key="frame" x="8" y="0.0" width="64" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="64" id="no6-Zv-3GZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-As-mXT">
+                                                    <rect key="frame" x="80" y="7" width="326" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cU2-Ov-nZP" firstAttribute="top" secondItem="wDe-16-BXd" secondAttribute="top" id="2w3-pZ-Od3"/>
+                                                <constraint firstAttribute="bottom" secondItem="cU2-Ov-nZP" secondAttribute="bottom" id="GyG-hv-62k"/>
+                                                <constraint firstItem="4VN-As-mXT" firstAttribute="leading" secondItem="cU2-Ov-nZP" secondAttribute="trailing" constant="8" symbolic="YES" id="HXR-Gd-ocl"/>
+                                                <constraint firstItem="cU2-Ov-nZP" firstAttribute="leading" secondItem="wDe-16-BXd" secondAttribute="leadingMargin" id="lxM-qC-bcd"/>
+                                                <constraint firstItem="4VN-As-mXT" firstAttribute="trailing" secondItem="wDe-16-BXd" secondAttribute="trailingMargin" id="meZ-zV-K1P"/>
+                                                <constraint firstItem="cU2-Ov-nZP" firstAttribute="centerY" secondItem="4VN-As-mXT" secondAttribute="centerY" id="qtk-kN-QFT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Vnu-gG-xhc" id="lCV-SQ-cbc"/>
+                            <outlet property="delegate" destination="Vnu-gG-xhc" id="FxD-qj-baY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="BE7-JW-lAJ"/>
+                    <connections>
+                        <outlet property="accountTextField" destination="hD6-xT-Z9w" id="n8a-d6-zeq"/>
+                        <outlet property="routingTextField" destination="4VN-As-mXT" id="wgA-OF-b2r"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4d-a9-r6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="2176"/>
+        </scene>
+        <!--New Bank View Controller-->
+        <scene sceneID="TtH-lX-RoI">
+            <objects>
+                <viewController id="p9x-0f-Nvm" customClass="newBankViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WbP-mf-ohS"/>
+                        <viewControllerLayoutGuide type="bottom" id="IaL-gS-AzG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KVs-X8-RGe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uND-XU-sP7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qJI-Rb-BPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3319" y="3615"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="E3o-v1-vY0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XHJ-ea-DOd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t4G-Kt-tqE">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vnu-gG-xhc" kind="relationship" relationship="rootViewController" id="Nec-SO-NVF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nn6-GA-uah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1552" y="1305"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="Yvt-ew-tF8">
+            <objects>
+                <viewController id="oUc-Mt-VBJ" customClass="EditProfileViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BGb-Ih-exK"/>
+                        <viewControllerLayoutGuide type="bottom" id="rg5-TW-hKv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zoJ-f4-udD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="9OX-2p-kE9" kind="show" identifier="showNewAddress" id="xaW-v1-A2F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yv-nb-dtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3319" y="1357"/>
+        </scene>
+        <!--New Address View Controller-->
+        <scene sceneID="8mE-8Y-za2">
+            <objects>
+                <viewController id="9OX-2p-kE9" customClass="NewAddressViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8sx-dU-2QW"/>
+                        <viewControllerLayoutGuide type="bottom" id="cUQ-xW-c1n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="px0-Hb-02E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2qU-EA-bVR"/>
+                    <connections>
+                        <segue destination="qdE-nR-9rC" kind="show" identifier="showSSN" id="CM1-Ge-VQ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mCq-oq-UlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3319" y="2176"/>
+        </scene>
+        <!--NewSSN View Controller-->
+        <scene sceneID="Cd3-Tg-ZKT">
+            <objects>
+                <viewController id="qdE-nR-9rC" customClass="NewSSNViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2V7-p7-RVW"/>
+                        <viewControllerLayoutGuide type="bottom" id="xJO-LA-fnJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lCG-vI-le4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="p9x-0f-Nvm" kind="show" identifier="showBank" id="oUB-Jc-8Im"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqi-ZT-aI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3319" y="2908"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="askQuestion" width="25" height="25"/>
+        <image name="menu" width="33" height="33"/>
+        <image name="money" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DRr-Ok-1jm"/>
+    </inferredMetricsTieBreakers>
 </document>

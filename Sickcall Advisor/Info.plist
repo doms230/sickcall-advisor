@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To upload your profile picture</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

@@ -1,9 +1,9 @@
 //
 //  IDViewController.swift
-//  Sickcall
+//  Sickcall Advisor
 //
-//  Created by Dom Smith on 8/6/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Created by Dominic Smith on 10/23/17.
+//  Copyright © 2017 Sickcall LLC. All rights reserved.
 //
 
 import UIKit
@@ -21,9 +21,9 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
     var lastName: String!
     var licenseNumber: String!
     var state: String!
-        
+    
     var successView: SCLAlertView!
-
+    
     var didSelectBirthday = false
     
     lazy var titleLabel: UILabel = {
@@ -104,7 +104,7 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
             self.present(controller, animated: true, completion: nil)
         }
         
-        //creat UI elements 
+        //creat UI elements
         self.view.addSubview(titleLabel)
         self.view.addSubview(birthdayLabel)
         self.view.addSubview(birthdayButton)
@@ -143,10 +143,10 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
         
         ssnText.becomeFirstResponder()
         
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     @objc func doneAction(_ sender: UIBarButtonItem){
         self.ssnText.resignFirstResponder()
         
@@ -162,14 +162,14 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
             newAdvisor["ssn"] = ssnText.text
             newAdvisor["connectId"] = ""
             newAdvisor["isActive"] = false
-            newAdvisor["isOnline"] = false 
+            newAdvisor["isOnline"] = false
             newAdvisor.saveEventually{
                 (success: Bool, error: Error?) -> Void in
                 self.stopAnimating()
                 if (success) {
-
+                    
                     self.successView.showSuccess("Success", subTitle: "Thank You! Our SickCall team will verify your information and get back to you via your SickCall email.")
-
+                    
                 } else {
                     SCLAlertView().showError("Post Failed", subTitle: "Check internet connection and try again. Contact help@sickcallhealth.com if the issue persists.")
                 }
@@ -246,12 +246,12 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
         if ssnText.text!.isEmpty{
             
             ssnText.attributedPlaceholder = NSAttributedString(string:"Field required",
-                                                                 attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
+                                                               attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
             
         } else if (ssnText.text?.characters.count)! != 4{
             ssnText.text = ""
             ssnText.attributedPlaceholder = NSAttributedString(string:"last 4 digits of your social security number",
-                                                                 attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
+                                                               attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
         }else{
             isValidated = true
         }
@@ -266,5 +266,5 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
         
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
-
+    
 }

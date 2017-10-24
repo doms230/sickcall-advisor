@@ -24,6 +24,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var userId: String!
     var objectId: String!
     var videoFile: PFFile!
+    var firstNameString: String!
     
     let screenSize: CGRect = UIScreen.main.bounds
     
@@ -34,6 +35,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var advisorRec = ""
     
     var isOnline = false
+    var isActive = false
+    var hasProfile = false
     
     var connectId: String!
     var isConnected = false
@@ -76,6 +79,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let desti = segue.destination as! EditProfileViewController
+        desti.nameString = firstNameString
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -97,31 +105,47 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.paymentAmount.text = "$\(payments)0"
         
-        if !isConnected{
-            cell.queueLabel.text = "You're almost there!"
-            cell.statusButton.setTitle("Complete my Setup", for: .normal)
+        if !hasProfile{
+            cell.queueLabel.text = "Verify that you're a registered nurse."
+            cell.statusButton.setTitle("Get Started", for: .normal)
             cell.statusButton.backgroundColor = uicolorFromHex(0xcf3812)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 0
+            
+        } else if !isActive{
+            cell.queueLabel.text = "Registered nurse verifiction pending"
+            cell.statusButton.setTitle("", for: .normal)
+            cell.statusButton.backgroundColor = UIColor.darkGray
+            cell.statusButton.isEnabled = false
+            cell.statusButton.tag = 0
+            
+        } else if !isConnected{
+            cell.queueLabel.text = "You're almost there!"
+            cell.statusButton.setTitle("Complete my Setup", for: .normal)
+            cell.statusButton.backgroundColor = uicolorFromHex(0xa67400)
+            cell.statusButton.setTitleColor(.white, for: .normal)
+            cell.statusButton.tag = 1
             
         } else if needBankInfo{
             cell.queueLabel.text = "Update your bank account"
             cell.statusButton.setTitle("Link Your Bank", for: .normal)
             cell.statusButton.backgroundColor = uicolorFromHex(0xcf3812)
             cell.statusButton.setTitleColor(.white, for: .normal)
-            cell.statusButton.tag = 1
+            cell.statusButton.tag = 2
             
         } else if isOnline{
             cell.queueLabel.text = "You're in queue for a question"
             cell.statusButton.setTitle("Online", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0x180d22)
+            cell.statusButton.backgroundColor = uicolorFromHex(0x006a52)
             cell.statusButton.setTitleColor(.white, for: .normal)
+            cell.statusButton.tag = 3
             
         } else {
             cell.queueLabel.text = "Start answering questions to make money"
             cell.statusButton.setTitle("Go Online", for: .normal)
             cell.statusButton.backgroundColor = .white
             cell.statusButton.setTitleColor(.black, for: .normal)
+            cell.statusButton.tag = 3
         }
         
         cell.statusButton.addTarget(self, action: #selector(DashboardViewController.statusAction(_:)), for: .touchUpInside)
@@ -130,10 +154,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func statusAction(_ sender: UIButton){
+        
         if sender.tag == 0{
-            self.performSegue(withIdentifier: "showNewBank", sender: self)
+            self.performSegue(withIdentifier: "showNewAdvisor", sender: self)
             
         } else if sender.tag == 1{
+            self.performSegue(withIdentifier: "showEditProfile", sender: self)
+            
+        } else if sender.tag == 2{
             self.performSegue(withIdentifier: "showBank", sender: self)
             
         } else {
@@ -200,25 +228,30 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
-                /*if object?["isOnline"] as! Bool{
-                    self.isOnline = true
-                }*/
-                
+                self.firstNameString = object?["first"] as! String
+                self.hasProfile = true
+                self.isOnline = object?["isOnline"] as! Bool
                 self.connectId = object?["connectId"] as! String
+                self.isActive = object?["isActive"] as! Bool
                 
-                if self.connectId == ""{
-                    self.didLoad = true
-                    self.tableJaunt.reloadData()
-                    self.stopAnimating()
-                
-                } else {
-                    self.isConnected = true
-                    self.getAccountInfo()
-                    self.getTransfers()
-                    self.tableJaunt.reloadData()
+                if self.isActive{
+                    if self.connectId == ""{
+                        self.didLoad = true
+                        self.tableJaunt.reloadData()
+                        self.stopAnimating()
+                        
+                    } else {
+                        self.isConnected = true
+                        self.getAccountInfo()
+                        self.getTransfers()
+                        self.tableJaunt.reloadData()
+                    }
                 }
                 
             } else{
+                self.didLoad = true
+                self.tableJaunt.reloadData()
+                self.stopAnimating()
                 //you're not connected to the internet message
             }
         }

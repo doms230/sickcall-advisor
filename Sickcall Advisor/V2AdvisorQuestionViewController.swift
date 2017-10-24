@@ -377,7 +377,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
                     
                     let search = UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel) {
                         UIAlertAction in
-                        let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
                         controller.isAdvisor = true 
                         self.present(controller, animated: true, completion: nil)
@@ -419,7 +419,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         
         cancelQuestionView = SCLAlertView(appearance: appearance)
         cancelQuestionView.addButton("Okay"){
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
             self.present(controller, animated: true, completion: nil)
         }
@@ -451,7 +451,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         Alamofire.request(self.baseURL, method: .post, parameters: ["id": objectId], encoding: JSONEncoding.default).validate().response{response in
             self.stopAnimating()
             print(response)
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
             controller.isAdvisor = true
             self.present(controller, animated: true, completion: nil)
@@ -462,7 +462,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         Alamofire.request(self.chargeURL, method: .post, parameters: ["charge": chargeId, "connectId": connectId, "user": self.patientUserId], encoding: JSONEncoding.default).validate().response{response in
             self.stopAnimating()
             print(response)
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
             controller.isAdvisor = true
             self.present(controller, animated: true, completion: nil)

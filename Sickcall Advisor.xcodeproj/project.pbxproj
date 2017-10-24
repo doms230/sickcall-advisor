@@ -24,6 +24,19 @@
 		596E15581F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15571F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift */; };
 		596E155E1F9EC0230049AE8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596E155D1F9EC0230049AE8C /* Main.storyboard */; };
 		596E15601F9EC0B50049AE8C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596E155F1F9EC0B50049AE8C /* Login.storyboard */; };
+		596E15621F9EE6CA0049AE8C /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15611F9EE6CA0049AE8C /* NameViewController.swift */; };
+		596E15641F9EE7420049AE8C /* QualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15631F9EE7420049AE8C /* QualificationsViewController.swift */; };
+		596E15661F9EE7770049AE8C /* IDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15651F9EE7770049AE8C /* IDViewController.swift */; };
+		596E15761F9EE9140049AE8C /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15711F9EE8AB0049AE8C /* NewAddressViewController.swift */; };
+		596E15771F9EE92C0049AE8C /* newBankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15731F9EE8AB0049AE8C /* newBankViewController.swift */; };
+		596E15781F9EE92F0049AE8C /* NewSSNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15741F9EE8AC0049AE8C /* NewSSNViewController.swift */; };
+		596E15791F9EE93F0049AE8C /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15721F9EE8AB0049AE8C /* InfoTableViewCell.swift */; };
+		596E157A1F9EE9420049AE8C /* BankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15751F9EE8AC0049AE8C /* BankTableViewController.swift */; };
+		596E157B1F9EE9530049AE8C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15531F9DC6930049AE8C /* LoginViewController.swift */; };
+		596E157C1F9EE9560049AE8C /* NewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15501F9DC6930049AE8C /* NewProfileViewController.swift */; };
+		596E157D1F9EE95A0049AE8C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15511F9DC6930049AE8C /* SignupViewController.swift */; };
+		596E157E1F9EE95D0049AE8C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15521F9DC6930049AE8C /* WelcomeViewController.swift */; };
+		596E15801F9EEFA00049AE8C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E157F1F9EEF890049AE8C /* EditProfileViewController.swift */; };
 		9A4E545507E9B099A1060718 /* Pods_Sickcall_Advisor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB06BB3EF3B80DDE56FF1B /* Pods_Sickcall_Advisor.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,15 +77,7 @@
 		596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorContainerViewController.swift; sourceTree = "<group>"; };
 		596E15391F9DC6390049AE8C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorTableViewCell.swift; sourceTree = "<group>"; };
-		596E153F1F9DC6570049AE8C /* QualificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
 		596E15401F9DC6580049AE8C /* AdvisorWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorWelcomeViewController.swift; sourceTree = "<group>"; };
-		596E15411F9DC6580049AE8C /* IDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDViewController.swift; sourceTree = "<group>"; };
-		596E15421F9DC6580049AE8C /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
-		596E15441F9DC66F0049AE8C /* newBankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newBankViewController.swift; sourceTree = "<group>"; };
-		596E15451F9DC66F0049AE8C /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
-		596E15461F9DC66F0049AE8C /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
-		596E15471F9DC66F0049AE8C /* BankTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewController.swift; sourceTree = "<group>"; };
-		596E15481F9DC66F0049AE8C /* NewSSNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSSNViewController.swift; sourceTree = "<group>"; };
 		596E15491F9DC67B0049AE8C /* AdvisorMedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorMedsViewController.swift; sourceTree = "<group>"; };
 		596E154A1F9DC67B0049AE8C /* AdvisorSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorSideBarViewController.swift; sourceTree = "<group>"; };
 		596E154B1F9DC67B0049AE8C /* V2AdvisorQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2AdvisorQuestionViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +90,15 @@
 		596E15591F9DCE040049AE8C /* Sickcall Advisor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sickcall Advisor.entitlements"; sourceTree = "<group>"; };
 		596E155D1F9EC0230049AE8C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		596E155F1F9EC0B50049AE8C /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		596E15611F9EE6CA0049AE8C /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		596E15631F9EE7420049AE8C /* QualificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
+		596E15651F9EE7770049AE8C /* IDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDViewController.swift; sourceTree = "<group>"; };
+		596E15711F9EE8AB0049AE8C /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
+		596E15721F9EE8AB0049AE8C /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		596E15731F9EE8AB0049AE8C /* newBankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newBankViewController.swift; sourceTree = "<group>"; };
+		596E15741F9EE8AC0049AE8C /* NewSSNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSSNViewController.swift; sourceTree = "<group>"; };
+		596E15751F9EE8AC0049AE8C /* BankTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewController.swift; sourceTree = "<group>"; };
+		596E157F1F9EEF890049AE8C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BF6512CC031101A23029FB63 /* Pods-Sickcall AdvisorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sickcall AdvisorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sickcall AdvisorUITests/Pods-Sickcall AdvisorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C07BD53725CA9424356D2662 /* Pods-Sickcall Advisor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sickcall Advisor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sickcall Advisor/Pods-Sickcall Advisor.debug.xcconfig"; sourceTree = "<group>"; };
 		D3ACF6714E98A15D193075A6 /* Pods_Sickcall_AdvisorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sickcall_AdvisorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,23 +171,24 @@
 		596E15071F9DA2160049AE8C /* Sickcall Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */,
+				596E15391F9DC6390049AE8C /* DashboardViewController.swift */,
+				596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */,
+				596E154A1F9DC67B0049AE8C /* AdvisorSideBarViewController.swift */,
+				596E15491F9DC67B0049AE8C /* AdvisorMedsViewController.swift */,
+				596E154B1F9DC67B0049AE8C /* V2AdvisorQuestionViewController.swift */,
+				596E15571F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift */,
+				596E15751F9EE8AC0049AE8C /* BankTableViewController.swift */,
 				596E155D1F9EC0230049AE8C /* Main.storyboard */,
 				596E15591F9DCE040049AE8C /* Sickcall Advisor.entitlements */,
 				596E15111F9DA2170049AE8C /* LaunchScreen.storyboard */,
 				596E15141F9DA2170049AE8C /* Info.plist */,
 				596E150F1F9DA2170049AE8C /* Assets.xcassets */,
-				596E15571F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift */,
 				596E15081F9DA2160049AE8C /* AppDelegate.swift */,
 				596E15551F9DC6A10049AE8C /* Post.swift */,
 				596E154F1F9DC6840049AE8C /* login */,
-				596E15491F9DC67B0049AE8C /* AdvisorMedsViewController.swift */,
-				596E154A1F9DC67B0049AE8C /* AdvisorSideBarViewController.swift */,
-				596E154B1F9DC67B0049AE8C /* V2AdvisorQuestionViewController.swift */,
 				596E15431F9DC6630049AE8C /* info */,
 				596E153E1F9DC6420049AE8C /* new  */,
-				596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */,
-				596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */,
-				596E15391F9DC6390049AE8C /* DashboardViewController.swift */,
 			);
 			path = "Sickcall Advisor";
 			sourceTree = "<group>";
@@ -200,9 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				596E15401F9DC6580049AE8C /* AdvisorWelcomeViewController.swift */,
-				596E15421F9DC6580049AE8C /* NameViewController.swift */,
-				596E153F1F9DC6570049AE8C /* QualificationsViewController.swift */,
-				596E15411F9DC6580049AE8C /* IDViewController.swift */,
+				596E15611F9EE6CA0049AE8C /* NameViewController.swift */,
+				596E15631F9EE7420049AE8C /* QualificationsViewController.swift */,
+				596E15651F9EE7770049AE8C /* IDViewController.swift */,
 			);
 			path = "new ";
 			sourceTree = "<group>";
@@ -210,11 +225,11 @@
 		596E15431F9DC6630049AE8C /* info */ = {
 			isa = PBXGroup;
 			children = (
-				596E15451F9DC66F0049AE8C /* InfoTableViewCell.swift */,
-				596E15471F9DC66F0049AE8C /* BankTableViewController.swift */,
-				596E15461F9DC66F0049AE8C /* NewAddressViewController.swift */,
-				596E15481F9DC66F0049AE8C /* NewSSNViewController.swift */,
-				596E15441F9DC66F0049AE8C /* newBankViewController.swift */,
+				596E15721F9EE8AB0049AE8C /* InfoTableViewCell.swift */,
+				596E157F1F9EEF890049AE8C /* EditProfileViewController.swift */,
+				596E15711F9EE8AB0049AE8C /* NewAddressViewController.swift */,
+				596E15731F9EE8AB0049AE8C /* newBankViewController.swift */,
+				596E15741F9EE8AC0049AE8C /* NewSSNViewController.swift */,
 			);
 			path = info;
 			sourceTree = "<group>";
@@ -223,10 +238,10 @@
 			isa = PBXGroup;
 			children = (
 				596E155F1F9EC0B50049AE8C /* Login.storyboard */,
-				596E15531F9DC6930049AE8C /* LoginViewController.swift */,
-				596E15501F9DC6930049AE8C /* NewProfileViewController.swift */,
-				596E15511F9DC6930049AE8C /* SignupViewController.swift */,
 				596E15521F9DC6930049AE8C /* WelcomeViewController.swift */,
+				596E15511F9DC6930049AE8C /* SignupViewController.swift */,
+				596E15501F9DC6930049AE8C /* NewProfileViewController.swift */,
+				596E15531F9DC6930049AE8C /* LoginViewController.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -579,15 +594,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				596E15801F9EEFA00049AE8C /* EditProfileViewController.swift in Sources */,
+				596E157B1F9EE9530049AE8C /* LoginViewController.swift in Sources */,
 				596E154D1F9DC67B0049AE8C /* AdvisorSideBarViewController.swift in Sources */,
+				596E157D1F9EE95A0049AE8C /* SignupViewController.swift in Sources */,
+				596E15791F9EE93F0049AE8C /* InfoTableViewCell.swift in Sources */,
 				596E154E1F9DC67B0049AE8C /* V2AdvisorQuestionViewController.swift in Sources */,
 				596E153D1F9DC6390049AE8C /* AdvisorTableViewCell.swift in Sources */,
+				596E157E1F9EE95D0049AE8C /* WelcomeViewController.swift in Sources */,
 				596E15561F9DC6A10049AE8C /* Post.swift in Sources */,
 				596E15091F9DA2160049AE8C /* AppDelegate.swift in Sources */,
+				596E15661F9EE7770049AE8C /* IDViewController.swift in Sources */,
 				596E154C1F9DC67B0049AE8C /* AdvisorMedsViewController.swift in Sources */,
+				596E15641F9EE7420049AE8C /* QualificationsViewController.swift in Sources */,
+				596E15781F9EE92F0049AE8C /* NewSSNViewController.swift in Sources */,
 				596E153C1F9DC6390049AE8C /* DashboardViewController.swift in Sources */,
+				596E157C1F9EE9560049AE8C /* NewProfileViewController.swift in Sources */,
 				596E153B1F9DC6390049AE8C /* AdvisorContainerViewController.swift in Sources */,
 				596E15581F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift in Sources */,
+				596E15621F9EE6CA0049AE8C /* NameViewController.swift in Sources */,
+				596E15761F9EE9140049AE8C /* NewAddressViewController.swift in Sources */,
+				596E15771F9EE92C0049AE8C /* newBankViewController.swift in Sources */,
+				596E157A1F9EE9420049AE8C /* BankTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

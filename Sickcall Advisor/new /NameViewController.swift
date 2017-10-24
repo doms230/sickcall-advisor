@@ -1,9 +1,9 @@
 //
 //  NameViewController.swift
-//  Sickcall
+//  Sickcall Advisor
 //
-//  Created by Dom Smith on 8/5/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Created by Dominic Smith on 10/23/17.
+//  Copyright © 2017 Sickcall LLC. All rights reserved.
 //
 
 import UIKit
@@ -110,7 +110,7 @@ class NameViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let desti = segue.destination as! QualificationsViewController
@@ -118,11 +118,11 @@ class NameViewController: UIViewController {
         desti.lastName = lastNameText.text
     }
     
-    //make keyboard go away 
+    //make keyboard go away
     /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-        super.touchesBegan(touches, with: event)
-    }*/
+     view.endEditing(true)
+     super.touchesBegan(touches, with: event)
+     }*/
     
     @IBAction func nextAction(_ sender: UIBarButtonItem) {
         //startAnimating()

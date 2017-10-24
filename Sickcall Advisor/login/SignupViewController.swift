@@ -56,21 +56,6 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         return label
     }()
     
-    lazy var nurseSwitch: UISwitch = {
-        let switchJaunt = UISwitch()
-        switchJaunt.onTintColor = uicolorFromHex(0x180d22)
-        return switchJaunt
-    }()
-    
-    lazy var switchLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 17)
-        label.text = "I'm a registered nurse"
-        label.textColor = UIColor.black
-        label.numberOfLines = 0
-        return label
-    }()
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         //print(numberToSend[0])
@@ -83,8 +68,6 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         self.view.addSubview(titleLabel)
         self.view.addSubview(emailText)
         self.view.addSubview(passwordText)
-        self.view.addSubview(nurseSwitch)
-        self.view.addSubview(switchLabel)
         
         titleLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.view).offset(75)
@@ -101,18 +84,6 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         passwordText.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(emailText.snp.bottom).offset(10)
             make.left.equalTo(self.view).offset(10)
-            make.right.equalTo(self.view).offset(-10)
-        }
-        
-        nurseSwitch.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(passwordText.snp.bottom).offset(10)
-            make.left.equalTo(self.view).offset(10)
-        }
-        nurseSwitch.addTarget(self, action: #selector(switchAction(_:)), for: .valueChanged)
-        
-        switchLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(nurseSwitch.snp.top).offset(1)
-            make.left.equalTo(nurseSwitch.snp.right).offset(5)
             make.right.equalTo(self.view).offset(-10)
         }
         
