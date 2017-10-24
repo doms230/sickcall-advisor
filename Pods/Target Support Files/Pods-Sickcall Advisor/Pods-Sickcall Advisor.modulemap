@@ -1,0 +1,6 @@
+framework module Pods_Sickcall_Advisor {
+  umbrella header "Pods-Sickcall Advisor-umbrella.h"
+
+  export *
+  module * { export * }
+}
