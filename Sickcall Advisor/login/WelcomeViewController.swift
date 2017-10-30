@@ -48,7 +48,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     
     lazy var signinButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 3
@@ -59,7 +59,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     
     lazy var signupButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Sign up", for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 3
@@ -70,7 +70,8 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     
     lazy var facebookButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Continue with Facebook", for: .normal)
+        button.setTitle(" Login with Facebook", for: .normal)
+        button.setImage(UIImage(named: "facebook"), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 3
@@ -104,6 +105,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         self.view.addSubview(appEx)
         self.view.addSubview(signinButton)
         signinButton.addTarget(self, action: #selector(signInAction(_:)), for: .touchUpInside)
+        signinButton.setTitleColor(uicolorFromHex(0x006a52), for: .normal)
         self.view.addSubview(signupButton)
         signupButton.backgroundColor = uicolorFromHex(0x006a52)
         signupButton.addTarget(self, action: #selector(signupAction(_:)), for: .touchUpInside)
