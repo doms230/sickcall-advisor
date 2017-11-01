@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import SnapKit
 import BulletinBoard
+import ParseLiveQuery
 
 class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -77,6 +78,13 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         return label
     }()
     
+    let liveQueryClient = ParseLiveQuery.Client()
+    var subscription: Subscription<Post>?
+    var questionsQuery: PFQuery<Post>{
+        return (Post.query()!
+            .whereKey("isRemoved", equalTo: false) as! PFQuery<Post> )
+    }
+    
     lazy var selfieManager: BulletinManager = {
         
         let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
@@ -100,9 +108,25 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
     
      let imagePicker = UIImagePickerController()
     
+    override func viewDidAppear(_ animated: Bool) {
+        let query = PFQuery(className: "Post")
+        query.whereKey("advisorUserId", equalTo: PFUser.current()!.objectId!)
+        query.whereKey("isAnswered", equalTo: false)
+        query.order(byAscending: "createdAt")
+        query.getFirstObjectInBackground {
+            (object: PFObject?, error: Error?) -> Void in
+            if error == nil || object != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "question")
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startQuestionSubscription()
         imagePicker.delegate = self
         
         let query = PFQuery(className: "_User")
@@ -281,6 +305,21 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //live query
+    func startQuestionSubscription(){
+        subscription = liveQueryClient
+            .subscribe(questionsQuery)
+            .handle(Event.updated) { _, object in
+                print(object)
+                let user = object["advisorUserId"] as! String
+                if user == PFUser.current()?.objectId{
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "question")
+                    self.present(controller, animated: true, completion: nil)
+                }
+        }
     }
     
     

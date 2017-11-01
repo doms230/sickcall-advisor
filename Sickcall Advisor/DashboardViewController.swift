@@ -49,8 +49,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var payments = 0.00
     
     @IBOutlet weak var tableJaunt: UITableView!
+        
+    let liveQueryClient = ParseLiveQuery.Client()
+    var subscription: Subscription<Post>?
+    var questionsQuery: PFQuery<Post>{
+        return (Post.query()!
+            .whereKey("isRemoved", equalTo: false) as! PFQuery<Post> )
+    }
     
-    /**/
     lazy var notificationsManager: BulletinManager = {
         
         let page = PageBulletinItem(title: "Notifications")
@@ -79,15 +85,30 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }()
     
+    override func viewDidAppear(_ animated: Bool) {
+        let query = PFQuery(className: "Post")
+        query.whereKey("advisorUserId", equalTo: PFUser.current()!.objectId!)
+        query.whereKey("isAnswered", equalTo: false)
+        query.order(byAscending: "createdAt")
+        query.getFirstObjectInBackground {
+            (object: PFObject?, error: Error?) -> Void in
+            if error == nil || object != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "question")
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.startQuestionSubscription()
 
         if UserDefaults.standard.object(forKey: "notifications") == nil{
             self.notificationsManager.prepare()
             self.notificationsManager.presentBulletin(above: self)
         }
-        
-        //startQuestionSubscription()
         
         self.title = "Dashboard"
         
@@ -170,7 +191,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.statusButton.backgroundColor = uicolorFromHex(0x006a52)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 3
-            startQuestionSubscription()
             
         } else {
             cell.queueLabel.text = "Start answering questions to make money"
@@ -186,7 +206,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func statusAction(_ sender: UIButton){
-        
         if sender.tag == 0{
             self.performSegue(withIdentifier: "showNewAdvisor", sender: self)
             
@@ -222,11 +241,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                             //do something
                         }
                     }
-                    
                     self.tableJaunt.reloadData()
-                    
-                } else{
-                    //your offline message
                 }
             }
         }
@@ -239,21 +254,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func startQuestionSubscription(){
-        
-        let liveQueryClient = ParseLiveQuery.Client()
-        var subscription: Subscription<Post>?
-        var questionsQuery: PFQuery<Post>{
-            return (Post.query()!
-                .whereKey("isRemoved", equalTo: false) as! PFQuery<Post> )
-        }
-        
          subscription = liveQueryClient
             .subscribe(questionsQuery)
             .handle(Event.updated) { _, object in
-                //print(object)
+                print(object)
                 let user = object["advisorUserId"] as! String
                 if user == PFUser.current()?.objectId{
-                    let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "question")
                     self.present(controller, animated: true, completion: nil)
                 }
@@ -298,7 +305,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getAccountInfo(){
-        
         //class won't compile with textfield straight in parameters so has to be put to string first
         let p: Parameters = [
             "account_Id": connectId,

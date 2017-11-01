@@ -13,6 +13,7 @@ import FacebookCore
 import FacebookLogin
 import ParseFacebookUtilsV4
 import Stripe
+import ParseLiveQuery
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -53,22 +54,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Parse.initialize(with: configuration)
         
         PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        if PFUser.current() != nil{
+        if PFUser.current()?.objectId != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
-            
+
+            //not signed in
         } else {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "welcome")
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         }
-        
-        //PFUser.logOut()
         
         return true
     }
@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -113,18 +113,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         installation?.saveInBackground()
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+   /* func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         //parse stuff
-        if ( application.applicationState == UIApplicationState.background ){
-            PFPush.handle(userInfo)
-        }
-    }
+        PFPush.handle(userInfo)
+    }*/
     
-    @available(iOS 10.0, *)
+    //@available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         PFPush.handle(notification.request.content.userInfo)
-        completionHandler(.alert)
+        completionHandler([.alert, .sound])
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -138,31 +136,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
-    }
-    
-    func checkUserDefaults(){
-        if let side = UserDefaults.standard.string(forKey: "side"){
-            if side == "patient"{
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-                self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
-                
-            } else {
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "container")
-                self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
-            }
-            
-        } else {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
     }
 }

@@ -1,8 +1,9 @@
 //
 //  Post.swift
-//Sickcall
-//  Created by Dominic Smtih on 7/19/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Sickcall Advisor
+//
+//  Created by Dominic Smith on 11/1/17.
+//  Copyright © 2017 Sickcall LLC. All rights reserved.
 //
 
 import UIKit
@@ -10,9 +11,9 @@ import Parse
 
 public class Post: PFObject, PFSubclassing {
     
-  /*  override public class func initialize() {
-        // registerSubclass()
-    }*/
+    /*  override public class func initialize() {
+     // registerSubclass()
+     }*/
     
     public class func parseClassName() -> String {
         return "Post"
