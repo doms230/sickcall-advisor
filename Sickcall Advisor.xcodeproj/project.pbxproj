@@ -13,7 +13,6 @@
 		596E15131F9DA2170049AE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596E15111F9DA2170049AE8C /* LaunchScreen.storyboard */; };
 		596E151E1F9DA2170049AE8C /* Sickcall_AdvisorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E151D1F9DA2170049AE8C /* Sickcall_AdvisorTests.swift */; };
 		596E15291F9DA2170049AE8C /* Sickcall_AdvisorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15281F9DA2170049AE8C /* Sickcall_AdvisorUITests.swift */; };
-		596E153B1F9DC6390049AE8C /* AdvisorContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */; };
 		596E153C1F9DC6390049AE8C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15391F9DC6390049AE8C /* DashboardViewController.swift */; };
 		596E153D1F9DC6390049AE8C /* AdvisorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */; };
 		596E154C1F9DC67B0049AE8C /* AdvisorMedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15491F9DC67B0049AE8C /* AdvisorMedsViewController.swift */; };
@@ -73,7 +72,6 @@
 		596E15241F9DA2170049AE8C /* Sickcall AdvisorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sickcall AdvisorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596E15281F9DA2170049AE8C /* Sickcall_AdvisorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sickcall_AdvisorUITests.swift; sourceTree = "<group>"; };
 		596E152A1F9DA2170049AE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorContainerViewController.swift; sourceTree = "<group>"; };
 		596E15391F9DC6390049AE8C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorTableViewCell.swift; sourceTree = "<group>"; };
 		596E15401F9DC6580049AE8C /* AdvisorWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				596E155D1F9EC0230049AE8C /* Main.storyboard */,
 				596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */,
 				596E15391F9DC6390049AE8C /* DashboardViewController.swift */,
-				596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */,
 				596E154A1F9DC67B0049AE8C /* AdvisorSideBarViewController.swift */,
 				596E15491F9DC67B0049AE8C /* AdvisorMedsViewController.swift */,
 				596E154B1F9DC67B0049AE8C /* V2AdvisorQuestionViewController.swift */,
@@ -612,7 +609,6 @@
 				596E15781F9EE92F0049AE8C /* NewSSNViewController.swift in Sources */,
 				596E153C1F9DC6390049AE8C /* DashboardViewController.swift in Sources */,
 				596E157C1F9EE9560049AE8C /* NewProfileViewController.swift in Sources */,
-				596E153B1F9DC6390049AE8C /* AdvisorContainerViewController.swift in Sources */,
 				596E15581F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift in Sources */,
 				596E15621F9EE6CA0049AE8C /* NameViewController.swift in Sources */,
 				596E15761F9EE9140049AE8C /* NewAddressViewController.swift in Sources */,

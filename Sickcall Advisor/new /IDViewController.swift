@@ -24,6 +24,10 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
     
     var successView: SCLAlertView!
     
+    var birthdayMonth: Int!
+    var birthdayDay: Int!
+    var birthdayYear: Int!
+    
     var didSelectBirthday = false
     
     lazy var titleLabel: UILabel = {
@@ -158,11 +162,13 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
             newAdvisor["last"] = lastName
             newAdvisor["licenseNumber"] = licenseNumber
             newAdvisor["state"] = state
-            newAdvisor["birthday"] = birthdayButton.titleLabel?.text
             newAdvisor["ssn"] = ssnText.text
             newAdvisor["connectId"] = ""
             newAdvisor["isActive"] = false
             newAdvisor["isOnline"] = false
+            newAdvisor["birthdayDay"] = self.birthdayDay
+            newAdvisor["birthdayMonth"] = self.birthdayMonth
+            newAdvisor["birthdayYear"] = self.birthdayYear
             newAdvisor.saveEventually{
                 (success: Bool, error: Error?) -> Void in
                 self.stopAnimating()
@@ -225,6 +231,12 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
         
         didSelectBirthday = true
         
+        ///
+        let calendar = Calendar.current
+        
+        self.birthdayYear = calendar.component(.year, from: sender.date)
+        self.birthdayMonth = calendar.component(.month, from: sender.date)
+        self.birthdayDay = calendar.component(.day, from: sender.date)
     }
     
     //validate

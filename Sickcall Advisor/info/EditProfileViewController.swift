@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 import Kingfisher
 import SnapKit
 import SCLAlertView
+import BulletinBoard
 
 class EditProfileViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,NVActivityIndicatorViewable {
     
@@ -46,6 +47,27 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         button.setTitleColor(.black, for: .normal)
         //label.numberOfLines = 0
         return button
+    }()
+    
+    lazy var selfieManager: BulletinManager = {
+        
+        let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
+        selfiePage.image = UIImage(named: "selfie")
+        
+        selfiePage.descriptionText = "We want your patients to see that you're a real person!"
+        selfiePage.shouldCompactDescriptionText = true
+        selfiePage.actionButtonTitle = "Okay"
+        selfiePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        selfiePage.interfaceFactory.actionButtonTitleColor = .white
+        selfiePage.isDismissable = true
+        selfiePage.actionHandler = { (item: PageBulletinItem) in
+            selfiePage.manager?.dismissBulletin()
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        return BulletinManager(rootItem: selfiePage)
+        
     }()
     
     var imageJaunt: String!
@@ -107,7 +129,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
             query.getObjectInBackground(withId: PFUser.current()!.objectId!) {
                 (object: PFObject?, error: Error?) -> Void in
                 if error == nil && object != nil {
-                    object?["DisplayName"] = "\(self.nameString), RN"
+                    object?["DisplayName"] = "\(self.nameString!), RN"
                     object?.saveEventually {
                         (success: Bool, error: Error?) -> Void in
                         self.stopAnimating()
@@ -163,9 +185,8 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @objc func editProfile(_ sender: UIButton) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        self.selfieManager.prepare()
+        self.selfieManager.presentBulletin(above: self)
     }
     
     func uicolorFromHex(_ rgbValue:UInt32)->UIColor{

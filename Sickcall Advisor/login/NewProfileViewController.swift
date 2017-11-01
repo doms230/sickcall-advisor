@@ -122,16 +122,9 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
                 installation?["userId"] = PFUser.current()?.objectId
                 installation?.saveEventually()
                 
-                if self.isSwitchOn{
-                    let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "main") as! AdvisorContainerViewController
-                    initialViewController.isAdvisor = false
-                    self.present(initialViewController, animated: true, completion: nil)
-                } else {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-                    self.present(initialViewController, animated: true, completion: nil)
-                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
+                self.present(initialViewController, animated: true, completion: nil)
             }
         }
     }

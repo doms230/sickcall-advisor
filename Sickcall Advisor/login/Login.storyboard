@@ -1,133 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uwt-fy-VdF">
-<device id="retina5_9" orientation="portrait">
-<adaptation id="fullscreen"/>
-</device>
-<dependencies>
-<deployment identifier="iOS"/>
-<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-</dependencies>
-<scenes>
-<!--Welcome-->
-<scene sceneID="Pej-SM-iMz">
-<objects>
-<viewController storyboardIdentifier="welcome" title="Welcome" id="uwt-fy-VdF" customClass="WelcomeViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="Ln8-eg-K8A"/>
-<viewControllerLayoutGuide type="bottom" id="POD-aU-Pgc"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="cEP-tV-kIm">
-<rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<connections>
-<segue destination="4tY-kM-3B9" kind="show" identifier="showSignin" id="dYp-7p-ptP"/>
-<segue destination="F3A-2X-rcN" kind="show" identifier="showSignup" id="FdX-kg-QtH"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="bkU-90-FD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-3999.1999999999998" y="375.56221889055473"/>
-</scene>
-<!--What's Your Email?-->
-<scene sceneID="PSJ-iS-dN4">
-<objects>
-<viewController title="What's Your Email?" id="jBR-FO-afk" customClass="SignupViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="mR4-CO-ytl"/>
-<viewControllerLayoutGuide type="bottom" id="vcW-0V-CDD"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="k2Z-2U-vXz">
-<rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<navigationItem key="navigationItem" title="1/2" id="lt4-Gr-Tt5"/>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="BiP-Cb-KII" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-3060.8695652173915" y="1118.4782608695652"/>
-</scene>
-<!--Who Are You?-->
-<scene sceneID="hSS-zO-jcS">
-<objects>
-<viewController title="Who Are You?" id="MLw-lp-RTO" customClass="NewProfileViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="Whg-y9-xUX"/>
-<viewControllerLayoutGuide type="bottom" id="vqP-iU-9Wc"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="CFy-ac-NiI">
-<rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="6xt-os-Fqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-2204.3478260869565" y="1118.4782608695652"/>
-</scene>
-<!--Navigation Controller-->
-<scene sceneID="WmQ-0G-0WA">
-<objects>
-<navigationController automaticallyAdjustsScrollViewInsets="NO" id="4tY-kM-3B9" sceneMemberID="viewController">
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" id="hDx-VP-hHK">
-<rect key="frame" x="0.0" y="44" width="375" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="O8I-g0-Ixs" kind="relationship" relationship="rootViewController" id="tz3-vQ-qvk"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="SEU-x9-g50" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-3266" y="376"/>
-</scene>
-<!--Login View Controller-->
-<scene sceneID="aO0-qQ-NET">
-<objects>
-<viewController id="O8I-g0-Ixs" customClass="LoginViewController" customModule="Celecare" customModuleProvider="target" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="uW9-aP-rw7"/>
-<viewControllerLayoutGuide type="bottom" id="MNe-n0-7Iw"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="iSZ-Nr-Rck">
-<rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-</view>
-<navigationItem key="navigationItem" id="0zv-pB-Iaj">
-<barButtonItem key="rightBarButtonItem" title="Forgot Password" id="Lho-if-2R1">
-<connections>
-<action selector="forgotPasswordAction:" destination="O8I-g0-Ixs" id="2Ov-6m-R3m"/>
-</connections>
-</barButtonItem>
-</navigationItem>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="e0I-RP-rmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-2491.304347826087" y="375.00000000000006"/>
-</scene>
-<!--Navigation Controller-->
-<scene sceneID="aMt-gc-qVO">
-<objects>
-<navigationController automaticallyAdjustsScrollViewInsets="NO" id="F3A-2X-rcN" sceneMemberID="viewController">
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" id="qEG-So-SRx">
-<rect key="frame" x="0.0" y="44" width="375" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="jBR-FO-afk" kind="relationship" relationship="rootViewController" id="SwQ-B9-KsV"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="L19-BM-80v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="-3999.1999999999998" y="1118.5907046476761"/>
-</scene>
-</scenes>
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome-->
+        <scene sceneID="Pej-SM-iMz">
+            <objects>
+                <viewController storyboardIdentifier="welcome" title="Welcome" id="uwt-fy-VdF" customClass="WelcomeViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ln8-eg-K8A"/>
+                        <viewControllerLayoutGuide type="bottom" id="POD-aU-Pgc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cEP-tV-kIm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="4tY-kM-3B9" kind="show" identifier="showSignin" id="dYp-7p-ptP"/>
+                        <segue destination="F3A-2X-rcN" kind="show" identifier="showSignup" id="FdX-kg-QtH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkU-90-FD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3999.1999999999998" y="375.56221889055473"/>
+        </scene>
+        <!--What's Your Email?-->
+        <scene sceneID="PSJ-iS-dN4">
+            <objects>
+                <viewController title="What's Your Email?" id="jBR-FO-afk" customClass="SignupViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mR4-CO-ytl"/>
+                        <viewControllerLayoutGuide type="bottom" id="vcW-0V-CDD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k2Z-2U-vXz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lt4-Gr-Tt5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BiP-Cb-KII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3060.8695652173915" y="1118.4782608695652"/>
+        </scene>
+        <!--Who Are You?-->
+        <scene sceneID="hSS-zO-jcS">
+            <objects>
+                <viewController title="Who Are You?" id="MLw-lp-RTO" customClass="NewProfileViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Whg-y9-xUX"/>
+                        <viewControllerLayoutGuide type="bottom" id="vqP-iU-9Wc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CFy-ac-NiI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6xt-os-Fqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2204.3478260869565" y="1118.4782608695652"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WmQ-0G-0WA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4tY-kM-3B9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hDx-VP-hHK">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O8I-g0-Ixs" kind="relationship" relationship="rootViewController" id="tz3-vQ-qvk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEU-x9-g50" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3266" y="376"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="aO0-qQ-NET">
+            <objects>
+                <viewController id="O8I-g0-Ixs" customClass="LoginViewController" customModule="Sickcall_Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uW9-aP-rw7"/>
+                        <viewControllerLayoutGuide type="bottom" id="MNe-n0-7Iw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iSZ-Nr-Rck">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0zv-pB-Iaj">
+                        <barButtonItem key="rightBarButtonItem" title="Forgot Password" id="Lho-if-2R1">
+                            <connections>
+                                <action selector="forgotPasswordAction:" destination="O8I-g0-Ixs" id="2Ov-6m-R3m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0I-RP-rmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2491.304347826087" y="375.00000000000006"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aMt-gc-qVO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F3A-2X-rcN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qEG-So-SRx">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jBR-FO-afk" kind="relationship" relationship="rootViewController" id="SwQ-B9-KsV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L19-BM-80v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3999.1999999999998" y="1118.5907046476761"/>
+        </scene>
+    </scenes>
 </document>

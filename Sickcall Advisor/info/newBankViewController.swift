@@ -109,9 +109,9 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
                 
                 self.first_name = object!["first"] as! String
                 self.last_name = object!["last"] as! String
-                self.dobMonth = Int(object!["birthdaymonth"] as! String)
-                self.dobDay = Int(object!["birthdayday"] as! String)
-                self.dobYear = Int(object!["birthdayyear"] as! String)
+                self.dobMonth = object!["birthdayMonth"] as! Int
+                self.dobDay = object!["birthdayDay"] as! Int
+                self.dobYear = object!["birthdayYear"] as! Int
                 
             } else{
                 //you're not connected to the internet message

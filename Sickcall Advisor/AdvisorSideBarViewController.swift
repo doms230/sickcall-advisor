@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import SnapKit
+import BulletinBoard
 
 class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -74,6 +75,27 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         label.textColor = UIColor.black
         label.numberOfLines = 0
         return label
+    }()
+    
+    lazy var selfieManager: BulletinManager = {
+        
+        let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
+        selfiePage.image = UIImage(named: "selfie")
+        
+        selfiePage.descriptionText = "We want your patients to see that you're a real person!"
+        selfiePage.shouldCompactDescriptionText = true
+        selfiePage.actionButtonTitle = "Okay"
+        selfiePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        selfiePage.interfaceFactory.actionButtonTitleColor = .white
+        selfiePage.isDismissable = true
+        selfiePage.actionHandler = { (item: PageBulletinItem) in
+            selfiePage.manager?.dismissBulletin()
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        return BulletinManager(rootItem: selfiePage)
+        
     }()
     
      let imagePicker = UIImagePickerController()
@@ -198,9 +220,8 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
     @objc func buttonActions(_ sender: UIButton) {
         switch sender.tag{
         case 0:
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .photoLibrary
-            present(imagePicker, animated: true, completion: nil)
+            self.selfieManager.prepare()
+            self.selfieManager.presentBulletin(above: self)
         break
             
         case 1:
@@ -260,6 +281,16 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    //mich.
+    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        
+        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 
 }
