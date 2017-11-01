@@ -48,24 +48,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableJaunt: UITableView!
     
-    let liveQueryClient = ParseLiveQuery.Client()
-    private var subscription: Subscription<Post>?
-    var questionsQuery: PFQuery<Post>{
-        return (Post.query()!
-        .whereKey("isRemoved", equalTo: false) as! PFQuery<Post> )
-    }
+    /**/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startQuestionSubscription()
+        //startQuestionSubscription()
         
         self.title = "Dashboard"
         
         self.tableJaunt.register(AdvisorTableViewCell.self, forCellReuseIdentifier: "dashboardReuse")
         self.tableJaunt.estimatedRowHeight = 50
         self.tableJaunt.rowHeight = UITableViewAutomaticDimension
-        self.tableJaunt.backgroundColor = uicolorFromHex(0xe8e6df)
+        //self.tableJaunt.backgroundColor = uicolorFromHex(0xe8e6df)
         
         super.viewDidLoad()
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
@@ -80,8 +75,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let desti = segue.destination as! EditProfileViewController
-        desti.nameString = firstNameString
+        if segue.identifier == "showEditProfile"{
+            let desti = segue.destination as! EditProfileViewController
+            desti.nameString = firstNameString
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,35 +98,35 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardReuse", for: indexPath) as! AdvisorTableViewCell
         
-        cell.backgroundColor = uicolorFromHex(0xe8e6df)
-        
+       // cell.backgroundColor = uicolorFromHex(0xe8e6df)
         cell.paymentAmount.text = "$\(payments)0"
         
         if !hasProfile{
             cell.queueLabel.text = "Verify that you're a registered nurse."
             cell.statusButton.setTitle("Get Started", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xcf3812)
+            cell.statusButton.backgroundColor = uicolorFromHex(0xc0392b)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 0
             
         } else if !isActive{
-            cell.queueLabel.text = "Registered nurse verifiction pending"
-            cell.statusButton.setTitle("", for: .normal)
-            cell.statusButton.backgroundColor = UIColor.darkGray
+            cell.queueLabel.text = "We'll email you via your Sickcall email when we're finished!"
+            cell.statusButton.setTitle("RN Verification Pending", for: .normal)
+            cell.statusButton.backgroundColor = uicolorFromHex(0x2c3e50)
+            cell.statusButton.setTitleColor(UIColor.white, for: .normal)
             cell.statusButton.isEnabled = false
             cell.statusButton.tag = 0
             
         } else if !isConnected{
             cell.queueLabel.text = "You're almost there!"
-            cell.statusButton.setTitle("Complete my Setup", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xa67400)
+            cell.statusButton.setTitle("Complete My Setup", for: .normal)
+            cell.statusButton.backgroundColor = uicolorFromHex(0xf39c12)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 1
             
         } else if needBankInfo{
             cell.queueLabel.text = "Update your bank account"
             cell.statusButton.setTitle("Link Your Bank", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xcf3812)
+            cell.statusButton.backgroundColor = uicolorFromHex(0xc0392b)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 2
             
@@ -139,11 +136,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.statusButton.backgroundColor = uicolorFromHex(0x006a52)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 3
+            startQuestionSubscription()
             
         } else {
             cell.queueLabel.text = "Start answering questions to make money"
             cell.statusButton.setTitle("Go Online", for: .normal)
-            cell.statusButton.backgroundColor = .white
+            cell.statusButton.backgroundColor = uicolorFromHex(0xe8e6df)
             cell.statusButton.setTitleColor(.black, for: .normal)
             cell.statusButton.tag = 3
         }
@@ -207,8 +205,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func startQuestionSubscription(){
-        self.subscription = self.liveQueryClient
-            .subscribe(self.questionsQuery)
+        
+        let liveQueryClient = ParseLiveQuery.Client()
+        var subscription: Subscription<Post>?
+        var questionsQuery: PFQuery<Post>{
+            return (Post.query()!
+                .whereKey("isRemoved", equalTo: false) as! PFQuery<Post> )
+        }
+        
+         subscription = liveQueryClient
+            .subscribe(questionsQuery)
             .handle(Event.updated) { _, object in
                 //print(object)
                 let user = object["advisorUserId"] as! String
@@ -227,6 +233,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         query.whereKey("userId", equalTo: userId!)
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
+            self.didLoad = true
             if error == nil || object != nil {
                 self.firstNameString = object?["first"] as! String
                 self.hasProfile = true
@@ -237,19 +244,18 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 if self.isActive{
                     if self.connectId == ""{
                         self.didLoad = true
-                        self.tableJaunt.reloadData()
                         self.stopAnimating()
                         
                     } else {
                         self.isConnected = true
                         self.getAccountInfo()
                         self.getTransfers()
-                        self.tableJaunt.reloadData()
                     }
                 }
+                self.tableJaunt.reloadData()
+                self.stopAnimating()
                 
             } else{
-                self.didLoad = true
                 self.tableJaunt.reloadData()
                 self.stopAnimating()
                 //you're not connected to the internet message

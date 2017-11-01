@@ -113,7 +113,7 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
         self.view.addSubview(ssnText)
         
         titleLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view).offset(75)
+            make.top.equalTo(self.view).offset(100)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
         }
@@ -168,7 +168,7 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
                 self.stopAnimating()
                 if (success) {
                     
-                    self.successView.showSuccess("Success", subTitle: "Thank You! Our SickCall team will verify your information and get back to you via your SickCall email.")
+                    self.successView.showSuccess("Success", subTitle: "Thank You! Our Sickcall team will verify your information and get back to you via your Sickcall email.")
                     
                 } else {
                     SCLAlertView().showError("Post Failed", subTitle: "Check internet connection and try again. Contact help@sickcallhealth.com if the issue persists.")

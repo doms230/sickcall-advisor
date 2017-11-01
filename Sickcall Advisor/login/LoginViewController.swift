@@ -74,7 +74,7 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
         self.view.addSubview(signButton)
         
         titleLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view).offset(75)
+            make.top.equalTo(self.view).offset(100)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
         }
@@ -169,7 +169,9 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
                 installation?["userId"] = PFUser.current()?.objectId
                 installation?.saveEventually()
                 
-                self.determineNextScreen()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
+                self.present(initialViewController, animated: true, completion: nil)
                 
             } else {
                 self.stopAnimating()
@@ -203,52 +205,6 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
         }
     }
     
-    func determineNextScreen(){
-        let query = PFQuery(className: "Advisor")
-        query.whereKey("userId", equalTo: PFUser.current()!.objectId!)
-        query.getFirstObjectInBackground {
-            (object: PFObject?, error: Error?) -> Void in
-            self.stopAnimating()
-            if error == nil || object != nil {
-                if object!["isOnline"] as! Bool{
-                    let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-                    initialViewController.isAdvisor = true
-                    self.present(initialViewController, animated: true, completion: nil)
-                    
-                } else {
-                    self.checkUserDefaults()
-                    
-                }
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-                self.present(initialViewController, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    //checks to see what user was using Sickcall as last... Advisor or patient
-    func checkUserDefaults(){
-        if let side = UserDefaults.standard.string(forKey: "side"){
-            if side == "patient"{
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-                self.present(initialViewController, animated: true, completion: nil)
-                
-            } else {
-                let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-                initialViewController.isAdvisor = true
-                self.present(initialViewController, animated: true, completion: nil)
-            }
-            
-        }else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-            self.present(initialViewController, animated: true, completion: nil)
-        }
-    }
     
     @objc func exitAction(_ sender: UIBarButtonItem){
         let storyboard = UIStoryboard(name: "Login", bundle: nil)

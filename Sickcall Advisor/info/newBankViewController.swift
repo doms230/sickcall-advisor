@@ -127,12 +127,10 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
         
         successView = SCLAlertView(appearance: appearance)
         successView.addButton("Okay") {
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-            controller.isAdvisor = true
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "main")
             self.present(controller, animated: true, completion: nil)
         }
-        
     }
     
     @objc func doneAction(_ sender: UIBarButtonItem){
@@ -222,7 +220,7 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
         self.view.addSubview(bRoutingtext)
         
         accountLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view).offset(75)
+            make.top.equalTo(self.view).offset(100)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
         }

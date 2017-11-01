@@ -15,8 +15,12 @@ import NVActivityIndicatorView
 import Kingfisher
 import SCLAlertView
 import SnapKit
+import BulletinBoard
 
 class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
+    
+    //bulletin wasn't showing on viewdidload.. moved to view did appear.. because of fb login, show bulleting again.. trying to avoid that by manualyy making sure it's not shown again.
+    var didShowWelcome = false
     
     var image: UIImage!
     var retreivedImage: PFFile!
@@ -30,8 +34,8 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     
     lazy var appName: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 50)
-        label.text = "Sickcall"
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 45)
+        label.text = "Sickcall Advisor"
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -39,8 +43,8 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     
     lazy var appEx: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue", size: 25)
-        label.text = "Find out how serious your health concern is"
+        label.font = UIFont(name: "HelveticaNeue", size: 20)
+        label.text = "Answer Sickcalls, whenever & wherever you want"
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -90,6 +94,97 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         //label.numberOfLines = 0
         return button
     }()
+    
+    var welcomePage: PageBulletinItem!
+    lazy var welcomeManager: BulletinManager = {
+        
+        welcomePage = PageBulletinItem(title: "Welcome to Sickcall ADV!")
+        welcomePage.image = UIImage(named: "appy")
+        
+        welcomePage.descriptionText = "Sickcall helps people find out how serious their health concern is. People record their question and an advisor responds with a low, medium, or high concern. We're counting on you to help us help people!"
+        welcomePage.shouldCompactDescriptionText = true
+        welcomePage.actionButtonTitle = "Next"
+        welcomePage.alternativeButtonTitle = "Get Started"
+        welcomePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        welcomePage.interfaceFactory.actionButtonTitleColor = .white
+        welcomePage.isDismissable = true
+        welcomePage.actionHandler = { (item: PageBulletinItem) in
+            self.welcomePage.manager?.dismissBulletin()
+            self.affordablemanger.prepare()
+            self.affordablemanger.presentBulletin(above: self)
+        }
+        welcomePage.alternativeHandler = { (item: PageBulletinItem) in
+            self.welcomePage.manager?.dismissBulletin()
+        }
+        return BulletinManager(rootItem: self.welcomePage)
+        
+    }()
+    
+    var affordablePage: PageBulletinItem!
+    lazy var affordablemanger: BulletinManager = {
+        
+        affordablePage = PageBulletinItem(title: "Make extra money")
+        affordablePage.image = UIImage(named: "dollar")
+        
+        affordablePage.descriptionText = "You get paid per answered question and can make $30-$60 per hour."
+        affordablePage.actionButtonTitle = "next"
+        affordablePage.alternativeButtonTitle = "Go Back"
+        affordablePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        affordablePage.interfaceFactory.actionButtonTitleColor = .white
+        affordablePage.isDismissable = true
+        affordablePage.nextItem = accesiblePage
+        affordablePage.actionHandler = { (item: PageBulletinItem) in
+            self.affordablePage.manager?.dismissBulletin()
+            self.accesibleManger.prepare()
+            self.accesibleManger.presentBulletin(above: self)
+        }
+        
+        affordablePage.alternativeHandler = { (item: PageBulletinItem) in
+            self.affordablePage.manager?.dismissBulletin()
+            self.welcomeManager.prepare()
+            self.welcomeManager.presentBulletin(above: self)
+            
+        }
+        return BulletinManager(rootItem: self.affordablePage)
+        
+    }()
+    
+    var accesiblePage: PageBulletinItem!
+    lazy var accesibleManger: BulletinManager = {
+        
+        accesiblePage = PageBulletinItem(title: "Set your own schedule")
+        accesiblePage.image = UIImage(named: "calendar")
+        
+        accesiblePage.descriptionText = "Answer questions when it's convenient for you. Anytime, anywhere."
+        accesiblePage.actionButtonTitle = "Get Started"
+        accesiblePage.alternativeButtonTitle = "Go Back"
+        accesiblePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        accesiblePage.interfaceFactory.actionButtonTitleColor = .white
+        accesiblePage.isDismissable = true
+        accesiblePage.actionHandler = { (item: PageBulletinItem) in
+            self.accesiblePage.manager?.dismissBulletin()
+            UserDefaults.standard.set(true, forKey: "welcomeInfo")
+            
+        }
+        accesiblePage.alternativeHandler = { (item: PageBulletinItem) in
+            self.accesiblePage.manager?.dismissBulletin()
+            self.affordablemanger.prepare()
+            self.affordablemanger.presentBulletin(above: self)
+            
+        }
+        return BulletinManager(rootItem: self.accesiblePage)
+        
+    }()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !didShowWelcome{
+            if UserDefaults.standard.object(forKey: "welcomeInfo") == nil{
+                self.welcomeManager.prepare()
+                self.welcomeManager.presentBulletin(above: self)
+            }
+            didShowWelcome = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,22 +267,6 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     }
     
     @objc func facebookAction(_ sender: UIButton) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-        let alertView = SCLAlertView(appearance: appearance)
-        
-        alertView.addButton("Yes"){
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-            initialViewController.isAdvisor = false
-            self.present(initialViewController, animated: true, completion: nil)
-        }
-        alertView.addButton("No") {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
-            self.present(controller, animated: true, completion: nil)
-        }
         //
         PFFacebookUtils.logInInBackground(withReadPermissions: ["public_profile","email"]){
             (user: PFUser?, error: Error?) -> Void in
@@ -239,8 +318,9 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
                                         (success: Bool, error: Error?) -> Void in
                                         if (success) {
                                             self.stopAnimating()
-                                            
-                                            alertView.showInfo("Are you a registered nurse?", subTitle: "")
+                                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                            let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
+                                            self.present(initialViewController, animated: true, completion: nil)
                                         }
                                     }
                                 }

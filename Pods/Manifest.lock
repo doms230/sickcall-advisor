@@ -7,6 +7,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - BulletinBoard (1.3.0)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.27)
@@ -19,7 +20,7 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.27.1):
     - FBSDKCoreKit
-  - Kingfisher (4.1.0)
+  - Kingfisher (4.2.0)
   - NVActivityIndicatorView (4.0.0):
     - NVActivityIndicatorView/Presenter (= 4.0.0)
   - NVActivityIndicatorView/Presenter (4.0.0)
@@ -40,11 +41,12 @@ PODS:
   - SlackTextViewController (1.9.5)
   - SnapKit (4.0.0)
   - Starscream (2.1.1)
-  - Stripe (11.3.0)
+  - Stripe (11.4.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
+  - BulletinBoard
   - FacebookCore
   - FacebookLogin
   - Kingfisher
@@ -72,11 +74,12 @@ SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Bolts-Swift: fa98d1b59fc1acea9b21a21306dcdca1c85e3737
+  BulletinBoard: 23c9d98cac654fd484d76f2a0655669974e9bd9c
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
   FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
   FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
-  Kingfisher: f14df8cbe576bf55f211fa589e9869bceb4ea87d
+  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
   Parse: cdc0f1f975ee8be0409e66f21b05df4ae067047c
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
@@ -86,9 +89,9 @@ SPEC CHECKSUMS:
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
-  Stripe: 3c86dc18af21e59dd559aa15e83cb501248f9903
+  Stripe: dc8396620ab86a36221fc8df72ba9f5d317d174c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 77f516b5a205d6ce7d1bdf4064a0b1569be2df8d
+PODFILE CHECKSUM: 80046b5ad6d555e4f5130f90b679fae71c9bd916
 
 COCOAPODS: 1.3.1

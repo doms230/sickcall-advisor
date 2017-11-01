@@ -45,6 +45,7 @@ target 'Sickcall Advisor' do
   #pod 'DateTimePicker'
   pod 'NVActivityIndicatorView'
   #pod 'SRCountdownTimer'
+  pod 'BulletinBoard'
   pod "SlackTextViewController"
 
 

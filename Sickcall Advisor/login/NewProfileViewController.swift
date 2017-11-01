@@ -66,7 +66,7 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
         
         image.snp.makeConstraints { (make) -> Void in
             make.height.width.equalTo(100)
-            make.top.equalTo(self.view).offset(75)
+            make.top.equalTo(self.view).offset(100)
             make.left.equalTo(self.view).offset(screenSize.width / 2 - 50)
         }
         
@@ -124,7 +124,7 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
                 
                 if self.isSwitchOn{
                     let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "main") as! AdvisorContainerViewController
                     initialViewController.isAdvisor = false
                     self.present(initialViewController, animated: true, completion: nil)
                 } else {

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		01E8706088A8C826E8417EE9 /* Pods_Sickcall_AdvisorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3ACF6714E98A15D193075A6 /* Pods_Sickcall_AdvisorTests.framework */; };
 		0E3688CBF1F72BC75AC13D7B /* Pods_Sickcall_AdvisorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B67D5161FA22CB78974513 /* Pods_Sickcall_AdvisorUITests.framework */; };
-		596E15091F9DA2160049AE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15081F9DA2160049AE8C /* AppDelegate.swift */; };
 		596E15101F9DA2170049AE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596E150F1F9DA2170049AE8C /* Assets.xcassets */; };
 		596E15131F9DA2170049AE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596E15111F9DA2170049AE8C /* LaunchScreen.storyboard */; };
 		596E151E1F9DA2170049AE8C /* Sickcall_AdvisorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E151D1F9DA2170049AE8C /* Sickcall_AdvisorTests.swift */; };
@@ -37,6 +36,7 @@
 		596E157D1F9EE95A0049AE8C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15511F9DC6930049AE8C /* SignupViewController.swift */; };
 		596E157E1F9EE95D0049AE8C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E15521F9DC6930049AE8C /* WelcomeViewController.swift */; };
 		596E15801F9EEFA00049AE8C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E157F1F9EEF890049AE8C /* EditProfileViewController.swift */; };
+		59B5F7321FA97950008EE10C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B5F7311FA97950008EE10C /* AppDelegate.swift */; };
 		9A4E545507E9B099A1060718 /* Pods_Sickcall_Advisor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB06BB3EF3B80DDE56FF1B /* Pods_Sickcall_Advisor.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,6 @@
 		50B67D5161FA22CB78974513 /* Pods_Sickcall_AdvisorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sickcall_AdvisorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51B5DB85F0ADADF3E16D355F /* Pods-Sickcall AdvisorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sickcall AdvisorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sickcall AdvisorTests/Pods-Sickcall AdvisorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		596E15051F9DA2160049AE8C /* Sickcall Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sickcall Advisor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		596E15081F9DA2160049AE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		596E150F1F9DA2170049AE8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		596E15121F9DA2170049AE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		596E15141F9DA2170049AE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		596E15741F9EE8AC0049AE8C /* NewSSNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSSNViewController.swift; sourceTree = "<group>"; };
 		596E15751F9EE8AC0049AE8C /* BankTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewController.swift; sourceTree = "<group>"; };
 		596E157F1F9EEF890049AE8C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		59B5F7311FA97950008EE10C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF6512CC031101A23029FB63 /* Pods-Sickcall AdvisorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sickcall AdvisorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sickcall AdvisorUITests/Pods-Sickcall AdvisorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C07BD53725CA9424356D2662 /* Pods-Sickcall Advisor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sickcall Advisor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sickcall Advisor/Pods-Sickcall Advisor.debug.xcconfig"; sourceTree = "<group>"; };
 		D3ACF6714E98A15D193075A6 /* Pods_Sickcall_AdvisorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sickcall_AdvisorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +171,7 @@
 		596E15071F9DA2160049AE8C /* Sickcall Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				596E155D1F9EC0230049AE8C /* Main.storyboard */,
 				596E153A1F9DC6390049AE8C /* AdvisorTableViewCell.swift */,
 				596E15391F9DC6390049AE8C /* DashboardViewController.swift */,
 				596E15381F9DC6390049AE8C /* AdvisorContainerViewController.swift */,
@@ -179,16 +180,15 @@
 				596E154B1F9DC67B0049AE8C /* V2AdvisorQuestionViewController.swift */,
 				596E15571F9DCB6B0049AE8C /* ViewAnswerTableViewCell.swift */,
 				596E15751F9EE8AC0049AE8C /* BankTableViewController.swift */,
-				596E155D1F9EC0230049AE8C /* Main.storyboard */,
 				596E15591F9DCE040049AE8C /* Sickcall Advisor.entitlements */,
 				596E15111F9DA2170049AE8C /* LaunchScreen.storyboard */,
 				596E15141F9DA2170049AE8C /* Info.plist */,
 				596E150F1F9DA2170049AE8C /* Assets.xcassets */,
-				596E15081F9DA2160049AE8C /* AppDelegate.swift */,
 				596E15551F9DC6A10049AE8C /* Post.swift */,
 				596E154F1F9DC6840049AE8C /* login */,
 				596E15431F9DC6630049AE8C /* info */,
 				596E153E1F9DC6420049AE8C /* new  */,
+				59B5F7311FA97950008EE10C /* AppDelegate.swift */,
 			);
 			path = "Sickcall Advisor";
 			sourceTree = "<group>";
@@ -510,6 +510,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -532,6 +533,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoltsSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -594,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59B5F7321FA97950008EE10C /* AppDelegate.swift in Sources */,
 				596E15801F9EEFA00049AE8C /* EditProfileViewController.swift in Sources */,
 				596E157B1F9EE9530049AE8C /* LoginViewController.swift in Sources */,
 				596E154D1F9DC67B0049AE8C /* AdvisorSideBarViewController.swift in Sources */,
@@ -603,7 +606,6 @@
 				596E153D1F9DC6390049AE8C /* AdvisorTableViewCell.swift in Sources */,
 				596E157E1F9EE95D0049AE8C /* WelcomeViewController.swift in Sources */,
 				596E15561F9DC6A10049AE8C /* Post.swift in Sources */,
-				596E15091F9DA2160049AE8C /* AppDelegate.swift in Sources */,
 				596E15661F9EE7770049AE8C /* IDViewController.swift in Sources */,
 				596E154C1F9DC67B0049AE8C /* AdvisorMedsViewController.swift in Sources */,
 				596E15641F9EE7420049AE8C /* QualificationsViewController.swift in Sources */,
@@ -776,11 +778,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sickcall Advisor/Sickcall Advisor.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FK56654KPJ;
+				DEVELOPMENT_TEAM = 7AAP388EE3;
 				INFOPLIST_FILE = "Sickcall Advisor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sickcall.sickcalladvisor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sickcallc.sickcalladvisor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -794,11 +796,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sickcall Advisor/Sickcall Advisor.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FK56654KPJ;
+				DEVELOPMENT_TEAM = 7AAP388EE3;
 				INFOPLIST_FILE = "Sickcall Advisor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sickcall.sickcalladvisor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sickcallc.sickcalladvisor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

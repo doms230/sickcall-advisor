@@ -3,7 +3,7 @@
 //  Sickcall
 //
 //  Created by Dominic Smith on 7/26/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Copyright © 2017 Sickcall LLc All rights reserved.
 //
 
 //get bank info and post it above
@@ -63,9 +63,8 @@ class BankTableViewController: UITableViewController, NVActivityIndicatorViewabl
         
         successView = SCLAlertView(appearance: appearance)
         successView.addButton("Okay") {
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-            controller.isAdvisor = true
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "main")
             self.present(controller, animated: true, completion: nil)
         }
     }
@@ -128,13 +127,11 @@ class BankTableViewController: UITableViewController, NVActivityIndicatorViewabl
             
         } else {
             //cancel
-            let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-            controller.isAdvisor = true
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "main")
             self.present(controller, animated: true, completion: nil)
         }
     }
-    
     
     func getAccountInfo(){
         //class won't compile with textfield straight in parameters so has to be put to string first
@@ -166,8 +163,6 @@ class BankTableViewController: UITableViewController, NVActivityIndicatorViewabl
             }
         }
     }
-    
-
     
     func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
         let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0

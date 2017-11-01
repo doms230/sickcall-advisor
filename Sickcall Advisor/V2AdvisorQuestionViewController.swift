@@ -378,7 +378,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
                     let search = UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel) {
                         UIAlertAction in
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
+                        let controller = storyboard.instantiateViewController(withIdentifier: "main") as! AdvisorContainerViewController
                         controller.isAdvisor = true 
                         self.present(controller, animated: true, completion: nil)
                     }
@@ -420,7 +420,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         cancelQuestionView = SCLAlertView(appearance: appearance)
         cancelQuestionView.addButton("Okay"){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
+            let controller = storyboard.instantiateViewController(withIdentifier: "main") as! AdvisorContainerViewController
             self.present(controller, animated: true, completion: nil)
         }
     }
@@ -452,7 +452,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             self.stopAnimating()
             print(response)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
+            let controller = storyboard.instantiateViewController(withIdentifier: "main") as! AdvisorContainerViewController
             controller.isAdvisor = true
             self.present(controller, animated: true, completion: nil)
         }
@@ -463,7 +463,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             self.stopAnimating()
             print(response)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
+            let controller = storyboard.instantiateViewController(withIdentifier: "main") as! AdvisorContainerViewController
             controller.isAdvisor = true
             self.present(controller, animated: true, completion: nil)
         }

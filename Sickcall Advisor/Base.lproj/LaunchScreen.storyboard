@@ -4,7 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,18 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appy" translatesAutoresizingMaskIntoConstraints="NO" id="t6q-HF-ktR">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.90196078430000004" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="t6q-HF-ktR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="263" id="7uP-Js-0W2"/>
+                            <constraint firstItem="t6q-HF-ktR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="iVu-vM-tMf"/>
+                            <constraint firstItem="t6q-HF-ktR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="n7q-wk-9A6"/>
+                            <constraint firstItem="t6q-HF-ktR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="137" id="vtP-6Y-hy2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -25,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="appy" width="360" height="360"/>
+    </resources>
 </document>

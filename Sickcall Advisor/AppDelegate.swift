@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Sickcall Advisor
 //
-//  Created by Dominic Smith on 10/23/17.
+//  Created by Dominic Smith on 10/31/17.
 //  Copyright © 2017 Sickcall LLC. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //change color of time/status jaunts to white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for:UIControlState())
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: uicolorFromHex(0x006a52)], for:UIControlState())
         
         UITabBar.appearance().tintColor = uicolorFromHex(0x006a52)
         
@@ -38,10 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Parse *****
         
         // Override point for customization after application launch.
-       // Parse.enableLocalDatastore()
+        // Parse.enableLocalDatastore()
         
         // Initialize Parse.
-        
+        print("app delegate")
         
         //MARK - this is the real one below
         let configuration = ParseClientConfiguration {
@@ -56,8 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if PFUser.current() != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-            initialViewController.isAdvisor = true
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
             
@@ -167,4 +166,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 }
-

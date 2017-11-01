@@ -32,7 +32,6 @@ class AdvisorTableViewCell: UITableViewCell {
     
     lazy var paymentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
         view.clipsToBounds = true
         return view
     }()
@@ -49,7 +48,7 @@ class AdvisorTableViewCell: UITableViewCell {
     
     lazy var paymentAmount: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue", size: 40)
+        label.font = UIFont(name: "HelveticaNeue", size: 50)
         label.text = "$0.00"
         label.textAlignment = .center
         label.textColor = UIColor.black
@@ -59,7 +58,7 @@ class AdvisorTableViewCell: UITableViewCell {
     
     lazy var getPaidLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue", size: 15)
+        label.font = UIFont(name: "HelveticaNeue", size: 20)
         label.text = "Payments are deposited to your bank account every Wednesday"
         label.textAlignment = .center
         label.textColor = UIColor.black
@@ -70,7 +69,7 @@ class AdvisorTableViewCell: UITableViewCell {
     lazy var statusButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 3
         button.clipsToBounds = true
@@ -79,7 +78,7 @@ class AdvisorTableViewCell: UITableViewCell {
     
     lazy var queueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue", size: 14)
+        label.font = UIFont(name: "HelveticaNeue", size: 20)
         label.textColor = UIColor.black
         label.textAlignment = .center
         label.numberOfLines = 0

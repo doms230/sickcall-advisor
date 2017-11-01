@@ -70,7 +70,7 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         self.view.addSubview(passwordText)
         
         titleLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view).offset(75)
+            make.top.equalTo(self.view).offset(100)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
         }
@@ -174,16 +174,9 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
                 installation?["userId"] = PFUser.current()?.objectId
                 installation?.saveEventually()
                 
-                if self.isSwitchOn{
-                    let storyboard = UIStoryboard(name: "Advisor", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "container") as! AdvisorContainerViewController
-                    initialViewController.isAdvisor = false
-                    self.present(initialViewController, animated: true, completion: nil)
-                } else {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
-                    self.present(initialViewController, animated: true, completion: nil)
-                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "main")
+                self.present(initialViewController, animated: true, completion: nil)
             }
         }
     }

@@ -28,36 +28,9 @@ class AdvisorContainerViewController: SOContainerViewController,NVActivityIndica
         
         self.menuSide = .left
         
-        if isAdvisor{
-            let query = PFQuery(className: "Post")
-            query.whereKey("advisorUserId", equalTo: PFUser.current()!.objectId!)
-            query.whereKey("isAnswered", equalTo: false)
-            query.whereKey("isRemoved", equalTo: false)
-            query.addAscendingOrder("createdAt")
-            query.getFirstObjectInBackground {
-                (object: PFObject?, error: Error?) -> Void in
-                self.stopAnimating()
-                
-                if error != nil{
-                    self.topViewController = self.storyboard?.instantiateViewController(withIdentifier: "dashboard")
-                    
-                } else {
-                    self.segueQuestion = true 
-                    
-                    //doing this roundabout way to send advisor's connect id to view controller 
-                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "question") 
-                    self.topViewController = controller
-                    
-                }
-                
-                self.sideViewController = self.storyboard?.instantiateViewController(withIdentifier: "sidebar")
-            }
-            
-        } else {
-            self.stopAnimating()
-            self.topViewController = self.storyboard?.instantiateViewController(withIdentifier: "new")
-            self.sideViewController = self.storyboard?.instantiateViewController(withIdentifier: "sidebar")
-        }
+        self.stopAnimating()
+        self.topViewController = self.storyboard?.instantiateViewController(withIdentifier: "dashboard")
+        self.sideViewController = self.storyboard?.instantiateViewController(withIdentifier: "sidebar")
     }
     
     func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
