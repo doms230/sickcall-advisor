@@ -46,7 +46,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var needBankInfo = false
     var didLoad = false
     
-    var payments = 0.00
+    var payments = 50.00
     
     @IBOutlet weak var tableJaunt: UITableView!
         
@@ -62,7 +62,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let page = PageBulletinItem(title: "Notifications")
         page.image = UIImage(named: "bell")
         
-        page.descriptionText = "Sickcall uses notifications to let you know about important updates, like when your nurse advisor replies to your health concern."
+        page.descriptionText = "Sickcall uses notifications to let you know about important updates, like when you receive a new Sickcall."
         page.actionButtonTitle = "Okay"
         page.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
         page.interfaceFactory.actionButtonTitleColor = .white
@@ -89,6 +89,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let query = PFQuery(className: "Post")
         query.whereKey("advisorUserId", equalTo: PFUser.current()!.objectId!)
         query.whereKey("isAnswered", equalTo: false)
+        query.whereKey("isRemoved", equalTo: false)
         query.order(byAscending: "createdAt")
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in

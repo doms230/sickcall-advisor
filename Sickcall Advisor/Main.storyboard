@@ -96,9 +96,14 @@
                         <color key="tintColor" red="0.094117647060000004" green="0.050980392159999999" blue="0.1333333333" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="1n4-Vi-H9g">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="qDd-nh-5hQ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="qDd-nh-5hQ">
                             <connections>
                                 <action selector="cancelQuestionAction:" destination="cfc-fa-eej" id="Khi-n8-YER"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Medical info" id="ugl-O6-aXF">
+                            <connections>
+                                <action selector="showVitals:" destination="cfc-fa-eej" id="OC5-49-yh7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

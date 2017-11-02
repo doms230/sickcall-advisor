@@ -90,7 +90,7 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
         selfiePage.image = UIImage(named: "selfie")
         
-        selfiePage.descriptionText = "We want your patients to see that you're a real person!"
+        selfiePage.descriptionText = "We want your Sickcallers to see that you're a real person!"
         selfiePage.shouldCompactDescriptionText = true
         selfiePage.actionButtonTitle = "Okay"
         selfiePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
@@ -112,6 +112,7 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         let query = PFQuery(className: "Post")
         query.whereKey("advisorUserId", equalTo: PFUser.current()!.objectId!)
         query.whereKey("isAnswered", equalTo: false)
+        query.whereKey("isRemoved", equalTo: false)
         query.order(byAscending: "createdAt")
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
@@ -321,7 +322,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
                 }
         }
     }
-    
     
     //mich.
     func uicolorFromHex(_ rgbValue:UInt32)->UIColor{

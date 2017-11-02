@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class ViewAnswerTableViewCell: UITableViewCell {
-
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -45,7 +45,7 @@ class ViewAnswerTableViewCell: UITableViewCell {
     }
     
     
-    //advisor 
+    //advisor
     lazy var advisorImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor.black
@@ -80,7 +80,7 @@ class ViewAnswerTableViewCell: UITableViewCell {
         label.text = "Level"
         label.textColor = UIColor.black
         label.layer.cornerRadius = 3
-        label.clipsToBounds = true 
+        label.clipsToBounds = true
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -238,28 +238,28 @@ class ViewAnswerTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var vitalsButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = true
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        button.setTitle(" Info", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.setImage(UIImage(named: "vitals"), for: .normal)
-        return button
-    }()
+    /*lazy var vitalsButton: UIButton = {
+     let button = UIButton()
+     button.layer.cornerRadius = 5
+     button.clipsToBounds = true
+     button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+     button.setTitle(" Info", for: .normal)
+     button.setTitleColor(UIColor.white, for: .normal)
+     button.setImage(UIImage(named: "vitals"), for: .normal)
+     return button
+     }()*/
     
-    lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = true
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        button.setTitle(" Clinics", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.setImage(UIImage(named: "search"), for: .normal)
-        button.backgroundColor = .black
-        return button
-    }()
+    /* lazy var searchButton: UIButton = {
+     let button = UIButton()
+     button.layer.cornerRadius = 5
+     button.clipsToBounds = true
+     button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+     button.setTitle(" Clinics", for: .normal)
+     button.setTitleColor(UIColor.white, for: .normal)
+     button.setImage(UIImage(named: "search"), for: .normal)
+     button.backgroundColor = .black
+     return button
+     }()*/
     
     lazy var playImage: UIImageView = {
         let image = UIImageView()
@@ -291,12 +291,12 @@ class ViewAnswerTableViewCell: UITableViewCell {
         self.addSubview(summaryBody)
         //self.addSubview(durationLabel)
         self.addSubview(durationBody)
-        self.addSubview(vitalsButton)
-        self.addSubview(searchButton)
+        //self.addSubview(vitalsButton)
+        //self.addSubview(searchButton)
         
-       /* self.addSubview(videoButton)
-        self.videoButton.addSubview(videoImage)
-        self.videoButton.addSubview(videoLabel)*/
+        /* self.addSubview(videoButton)
+         self.videoButton.addSubview(videoImage)
+         self.videoButton.addSubview(videoLabel)*/
         
         durationBody.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(patientName.snp.bottom).offset(5)
@@ -315,7 +315,7 @@ class ViewAnswerTableViewCell: UITableViewCell {
             make.top.equalTo(summaryBody.snp.bottom).offset(10)
             make.left.equalTo(patientImage.snp.right).offset(5)
             // make.right.equalTo(self).offset(-100)
-             make.bottom.equalTo(self).offset(-20)
+            make.bottom.equalTo(self).offset(-10)
         }
         
         playImage.snp.makeConstraints { (make) -> Void in
@@ -326,42 +326,42 @@ class ViewAnswerTableViewCell: UITableViewCell {
             // make.bottom.equalTo(self).offset(-20)
         }
         
-        vitalsButton.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(125)
-            make.height.equalTo(40)
-            make.top.equalTo(videoButton.snp.top).offset(15)
-            make.left.equalTo(videoButton.snp.right).offset(10)
-            //make.right.equalTo(self).offset(-10)
-        }
+        /* vitalsButton.snp.makeConstraints { (make) -> Void in
+         make.height.equalTo(50)
+         make.top.equalTo(videoButton.snp.bottom).offset(10)
+         make.left.equalTo(self).offset(10)
+         make.right.equalTo(self).offset(-10)
+         make.bottom.equalTo(self).offset(-10)
+         }*/
         
-        searchButton.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(125)
-            make.height.equalTo(40)
-            make.top.equalTo(vitalsButton.snp.bottom).offset(10)
-            make.left.equalTo(videoButton.snp.right).offset(10)
-            //make.right.equalTo(self).offset(-10)
-           // make.bottom.equalTo(self).offset(-20)
-        }
+        /*searchButton.snp.makeConstraints { (make) -> Void in
+         make.width.equalTo(125)
+         make.height.equalTo(40)
+         make.top.equalTo(vitalsButton.snp.bottom).offset(10)
+         make.left.equalTo(videoButton.snp.right).offset(10)
+         //make.right.equalTo(self).offset(-10)
+         // make.bottom.equalTo(self).offset(-20)
+         }*/
         
         //video view
         /*videoButton.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(vitalsButton.snp.bottom).offset(10)
-            make.left.equalTo(patientImage.snp.right).offset(5)
-            make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self).offset(-20)
-        }
-        
-        videoImage.snp.makeConstraints { (make) -> Void in
-            make.height.width.equalTo(50)
-            make.top.equalTo(vitalsButton.snp.bottom).offset(10)
-            make.left.equalTo(videoButton)
-            make.bottom.equalTo(videoButton).offset(-20)
-        }
-        
-        videoLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(videoImage).offset(15)
-            make.left.equalTo(videoImage.snp.right).offset(5)
-        }*/
+         make.top.equalTo(vitalsButton.snp.bottom).offset(10)
+         make.left.equalTo(patientImage.snp.right).offset(5)
+         make.right.equalTo(self).offset(-10)
+         make.bottom.equalTo(self).offset(-20)
+         }
+         
+         videoImage.snp.makeConstraints { (make) -> Void in
+         make.height.width.equalTo(50)
+         make.top.equalTo(vitalsButton.snp.bottom).offset(10)
+         make.left.equalTo(videoButton)
+         make.bottom.equalTo(videoButton).offset(-20)
+         }
+         
+         videoLabel.snp.makeConstraints { (make) -> Void in
+         make.top.equalTo(videoImage).offset(15)
+         make.left.equalTo(videoImage.snp.right).offset(5)
+         }*/
     }
     
     ////

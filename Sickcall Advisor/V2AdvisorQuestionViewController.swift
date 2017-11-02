@@ -155,10 +155,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             cell.summaryBody.textColor = uicolorFromHex(0x180d22)
             cell.durationBody.text = self.duration
             cell.durationBody.textColor = uicolorFromHex(0x180d22)
-            
-            cell.vitalsButton.backgroundColor = uicolorFromHex(0x8c81ff)
-            cell.vitalsButton.addTarget(self, action: #selector(self.showVitals(_:)), for: .touchUpInside)
-            
+                    
             //TODO: Uncomment
             cell.videoButton.addTarget(self, action: #selector(self.loadPlayJaunt(_:)), for: .touchUpInside)
             cell.videoButton.kf.setImage(with: URL(string: self.videoPreview), for: .normal)
@@ -307,7 +304,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
                             self.chargePatient()
                             
                         } else {
-                           SCLAlertView().showError("Issue with Responding", subTitle: "Check internet connection and try again")
+                           SCLAlertView().showError("Issue with Response", subTitle: "Check internet connection and try again")
                         }
                     }
                 }
@@ -359,7 +356,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         }
     }
     
-    @objc func showVitals(_ sender: UIButton){
+    @IBAction func showVitals(_ sender: UIBarButtonItem){
         self.performSegue(withIdentifier: "showVitals", sender: self)
     }
     

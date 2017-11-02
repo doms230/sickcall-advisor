@@ -54,7 +54,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
         selfiePage.image = UIImage(named: "selfie")
         
-        selfiePage.descriptionText = "We want your patients to see that you're a real person!"
+        selfiePage.descriptionText = "We want your Sickcallers to see that you're a real person!"
         selfiePage.shouldCompactDescriptionText = true
         selfiePage.actionButtonTitle = "Okay"
         selfiePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
