@@ -3,7 +3,7 @@
 //  Sickcall
 //
 //  Created by Dom Smith on 7/14/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Copyright © 2017 Sickcall LLC All rights reserved.
 //
 
 import UIKit
@@ -103,6 +103,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let installation = PFInstallation.current()
+        //replace badge # when someone clicks on notification
+        installation?.badge = 0
+        installation?.saveInBackground()
         
         self.startQuestionSubscription()
 

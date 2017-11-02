@@ -2,7 +2,7 @@
 //Sickcall
 //
 //  Created by Dom Smith on 7/2/17.
-//  Copyright © 2017 Socialgroupe Incorporated All rights reserved.
+//  Copyright © 2017 Sickcall LLC All rights reserved.
 
 
 import UIKit

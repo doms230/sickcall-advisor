@@ -3,7 +3,7 @@
 //  Sickcall
 //
 //  Created by Dominic Smith on 7/26/17.
-//  Copyright © 2017 Sickcall LLc All rights reserved.
+//  Copyright © 2017 Sickcall LLC All rights reserved.
 //
 
 //get bank info and post it above

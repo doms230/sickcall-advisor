@@ -3,7 +3,7 @@
 //  Celecare
 //
 //  Created by Dominic Smith on 10/17/17.
-//  Copyright © 2017 Celecare LLC. All rights reserved.
+//  Copyright © 2017 Sickcall LLC All rights reserved.
 //
 
 import UIKit
