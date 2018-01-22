@@ -14,6 +14,8 @@ import ParseLiveQuery
 
 class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let color = Color()
+    
     lazy var profileView: UIView = {
         let view = UIView()
         return view
@@ -42,7 +44,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         button.setTitle(" Payments", for: .normal)
         button.setImage(UIImage(named: "money"), for: .normal)
         button.setTitleColor(.black, for: .normal)
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -53,7 +54,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         button.setTitle(" Edit Profile Picture", for: .normal)
         button.setImage(UIImage(named: "profile"), for: .normal)
         button.setTitleColor(.black, for: .normal)
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -64,7 +64,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         button.setTitle(" Support", for: .normal)
         button.setImage(UIImage(named: "support"), for: .normal)
         button.setTitleColor(.black, for: .normal)
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -86,14 +85,12 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
     }
     
     lazy var selfieManager: BulletinManager = {
-        
         let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
         selfiePage.image = UIImage(named: "selfie")
-        
         selfiePage.descriptionText = "We want your Sickcallers to see that you're a real person!"
         selfiePage.shouldCompactDescriptionText = true
         selfiePage.actionButtonTitle = "Okay"
-        selfiePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        selfiePage.interfaceFactory.tintColor = color.sickcallGreen()
         selfiePage.interfaceFactory.actionButtonTitleColor = .white
         selfiePage.isDismissable = true
         selfiePage.actionHandler = { (item: PageBulletinItem) in
@@ -103,7 +100,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
             self.present(self.imagePicker, animated: true, completion: nil)
         }
         return BulletinManager(rootItem: selfiePage)
-        
     }()
     
      let imagePicker = UIImagePickerController()
@@ -145,7 +141,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
                 
                 self.showProfile()
                 self.loadAdvisor()
-                
             }
         }
     }
@@ -157,7 +152,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
                 let isActive = object?["isActive"] as! Bool
-                
                 if isActive{
                     self.showUIOptions()
                     
@@ -184,23 +178,19 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         supportButton.addTarget(self, action: #selector(buttonActions(_:)) , for: .touchUpInside)
         self.supportButton.tag = 2
         
-        
         editProfileButton.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(profileView.snp.bottom).offset(25)
             make.left.equalTo(self.view).offset(10)
-            // make.right.equalTo(self.view).offset(-10)
         }
         
         paymentsButton.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.editProfileButton.snp.bottom).offset(20)
             make.left.equalTo(self.view).offset(10)
-            //make.right.equalTo(self.view).offset(-10)
         }
         
         supportButton.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(paymentsButton.snp.bottom).offset(20)
             make.left.equalTo(self.view).offset(10)
-            //make.right.equalTo(self.view).offset(-10)
         }
     }
     
@@ -209,7 +199,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         self.profileView.addSubview(profileImage)
         self.profileView.addSubview(profileName)
         profileView.snp.makeConstraints { (make) -> Void in
-            // make.width.equalTo(50)
             make.height.equalTo(50)
             make.top.equalTo(self.view).offset(100)
             make.left.equalTo(self.view).offset(5)
@@ -221,7 +210,6 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
             make.height.equalTo(50)
             make.top.equalTo(self.profileView.snp.top)
             make.left.equalTo(self.profileView.snp.left)
-            // make.right.equalTo(self.profileView.snp.right)
         }
         
         profileName.snp.makeConstraints { (make) -> Void in
@@ -256,12 +244,10 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
         case 2:
             let url = URL(string : "https://www.sickcallhealth.com/support" )
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-            //put support something here
             break
             
         default:
             break
-            
         }
     }
     
@@ -322,14 +308,4 @@ class AdvisorSideBarViewController: UIViewController,UIImagePickerControllerDele
                 }
         }
     }
-    
-    //mich.
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
-    }
-
 }

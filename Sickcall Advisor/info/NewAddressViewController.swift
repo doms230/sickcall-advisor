@@ -11,6 +11,8 @@ import SnapKit
 
 class NewAddressViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    let color = Color()
+    
     var tableJaunt: UITableView!
 
     var didChooseState = false
@@ -45,11 +47,9 @@ class NewAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tableJaunt.estimatedRowHeight = 50
         self.tableJaunt.rowHeight = UITableViewAutomaticDimension
         self.tableJaunt.keyboardDismissMode = .onDrag
-        self.tableJaunt.backgroundColor = uicolorFromHex(0xE8E6DF)
+        self.tableJaunt.backgroundColor = color.sickcallTan()
         self.tableJaunt.separatorStyle = .none
         self.view.addSubview(self.tableJaunt)
-        
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,10 +71,9 @@ class NewAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressReuse", for: indexPath) as! InfoTableViewCell
         cell.selectionStyle = .none
-        cell.backgroundColor = uicolorFromHex(0xE8E6DF)
+        cell.backgroundColor = color.sickcallTan()
         
         line1 = cell.line1Text
         line2 = cell.line2Text
@@ -89,7 +88,6 @@ class NewAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func stateAction(_ sender: UIButton) {
-        
         statePrompt = UIAlertController(title: "Choose State", message: "", preferredStyle: .actionSheet)
         
         let statePickerView: UIPickerView = UIPickerView()
@@ -139,8 +137,7 @@ class NewAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         state.setTitle(" \(states[row])", for: .normal)
          state.setTitleColor(.black, for: .normal)
-        //self.state = states[row]
-        //self.row = row
+        
         self.tableJaunt.reloadData()
         
         if states[row] != ""{
@@ -188,14 +185,5 @@ class NewAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         print("validation: \(isStateValidated)")
         return isStateValidated
-    }
-    
-    //mich.
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 }

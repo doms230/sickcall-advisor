@@ -12,7 +12,6 @@ import SnapKit
 class InfoTableViewCell: UITableViewCell {
 
     //address
-    
     lazy var streetlabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
@@ -107,16 +106,14 @@ class InfoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-       configureAddress()
         
+       configureAddress()
     }
     
     // We won’t use this but it’s required for the class to compile
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
     
     func configureAddress(){
         self.addSubview(streetlabel)
@@ -168,7 +165,6 @@ class InfoTableViewCell: UITableViewCell {
             make.width.equalTo(150)
             make.top.equalTo(self.statelabel.snp.bottom).offset(5)
             make.left.equalTo(self).offset(10)
-            //make.bottom.equalTo(self).offset(-20)
         }
         
         zipLabel.snp.makeConstraints { (make) -> Void in

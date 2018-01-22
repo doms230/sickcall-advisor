@@ -19,6 +19,8 @@ import BulletinBoard
 
 class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     
+    let color = Color()
+    
     //bulletin wasn't showing on viewdidload.. moved to view did appear.. because of fb login, show bulleting again.. trying to avoid that by manualyy making sure it's not shown again.
     var didShowWelcome = false
     
@@ -57,7 +59,6 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 3
         button.clipsToBounds = true
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -68,7 +69,6 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 3
         button.clipsToBounds = true
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -80,7 +80,6 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 3
         button.clipsToBounds = true
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -91,7 +90,6 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 3
         button.clipsToBounds = true
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -105,7 +103,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         welcomePage.shouldCompactDescriptionText = true
         welcomePage.actionButtonTitle = "Next"
         welcomePage.alternativeButtonTitle = "Get Started"
-        welcomePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        welcomePage.interfaceFactory.tintColor = color.sickcallGreen()
         welcomePage.interfaceFactory.actionButtonTitleColor = .white
         welcomePage.isDismissable = true
         welcomePage.actionHandler = { (item: PageBulletinItem) in
@@ -129,7 +127,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         affordablePage.descriptionText = "You get paid per answered question and can make $30-$60 per hour."
         affordablePage.actionButtonTitle = "next"
         affordablePage.alternativeButtonTitle = "Go Back"
-        affordablePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        affordablePage.interfaceFactory.tintColor = color.sickcallGreen()
         affordablePage.interfaceFactory.actionButtonTitleColor = .white
         affordablePage.isDismissable = true
         affordablePage.nextItem = accesiblePage
@@ -158,7 +156,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         accesiblePage.descriptionText = "Answer questions when it's convenient for you. Anytime, anywhere."
         accesiblePage.actionButtonTitle = "Get Started"
         accesiblePage.alternativeButtonTitle = "Go Back"
-        accesiblePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        accesiblePage.interfaceFactory.tintColor = color.sickcallGreen()
         accesiblePage.interfaceFactory.actionButtonTitleColor = .white
         accesiblePage.isDismissable = true
         accesiblePage.actionHandler = { (item: PageBulletinItem) in
@@ -170,10 +168,9 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
             self.accesiblePage.manager?.dismissBulletin()
             self.affordablemanger.prepare()
             self.affordablemanger.presentBulletin(above: self)
-            
         }
-        return BulletinManager(rootItem: self.accesiblePage)
         
+        return BulletinManager(rootItem: self.accesiblePage)
     }()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -190,22 +187,22 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         super.viewDidLoad()
 
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x006a52)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.sickcallGreen()
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
         self.view.addSubview(appImage)
         self.view.addSubview(appName)
-        appName.textColor = uicolorFromHex(0x006a52)
+        appName.textColor = color.sickcallGreen()
         self.view.addSubview(appEx)
         self.view.addSubview(signinButton)
         signinButton.addTarget(self, action: #selector(signInAction(_:)), for: .touchUpInside)
-        signinButton.setTitleColor(uicolorFromHex(0x006a52), for: .normal)
+        signinButton.setTitleColor(color.sickcallGreen(), for: .normal)
         self.view.addSubview(signupButton)
-        signupButton.backgroundColor = uicolorFromHex(0x006a52)
+        signupButton.backgroundColor = color.sickcallGreen()
         signupButton.addTarget(self, action: #selector(signupAction(_:)), for: .touchUpInside)
         self.view.addSubview(facebookButton)
-        facebookButton.backgroundColor = uicolorFromHex(0x0950D0)
+        facebookButton.backgroundColor = color.newColor(0x0950D0)
         facebookButton.addTarget(self, action: #selector(facebookAction(_:)), for: .touchUpInside)
         self.view.addSubview(termsButton)
         termsButton.addTarget(self, action: #selector(termsAction(_:)), for: .touchUpInside)
@@ -213,7 +210,6 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         appImage.snp.makeConstraints { (make) -> Void in
             make.height.width.equalTo(100)
             make.left.equalTo(self.view).offset(screenSize.width / 2 - 50)
-            //make.right.equalTo(self.view).offset(-10)
             make.bottom.equalTo(self.appName.snp.top).offset(-1)
         }
         
@@ -267,25 +263,20 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
     }
     
     @objc func facebookAction(_ sender: UIButton) {
-        //
         PFFacebookUtils.logInInBackground(withReadPermissions: ["public_profile","email"]){
             (user: PFUser?, error: Error?) -> Void in
             self.startAnimating()
             if let user = user {
-                print(user)
-                
                 let installation = PFInstallation.current()
                 installation?["user"] = user
                 installation?["userId"] = user.objectId
                 installation?.saveEventually()
                 
                 if user.isNew {
-                    
                     let request = FBSDKGraphRequest(graphPath: "me",parameters: ["fields": "id, name, first_name, last_name, email, gender, picture.type(large)"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
                     let _ = request?.start(completionHandler: { (connection, result, error) in
                         guard let userInfo = result as? [String: Any] else { return } //handle the error
                         
-                        print(userInfo)
                         //The url is nested 3 layers deep into the result so it's pretty messy
                         if let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
                             
@@ -340,16 +331,7 @@ class WelcomeViewController: UIViewController,NVActivityIndicatorViewable {
         }
     }
     
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
-    }    
-    
     @objc func termsAction(_ sender: UIButton) {
         UIApplication.shared.open(URL(string: "https://www.sickcallhealth.com/terms" )!, options: [:], completionHandler: nil)
     }
-
 }

@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         navigationBarAppearace.tintColor = uicolorFromHex(0x006a52)
         
         //Stripe ***
-        //STPPaymentConfiguration.shared().publishableKey = "pk_test_oP3znUobvO9fTRuYb6Qo7PYB"
-        STPPaymentConfiguration.shared().publishableKey = "pk_live_chGMzaqKctIYqbalvJbvRzWz"
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_oP3znUobvO9fTRuYb6Qo7PYB"
+        //STPPaymentConfiguration.shared().publishableKey = "pk_live_chGMzaqKctIYqbalvJbvRzWz"
         
         //Parse *****
         
@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Parse.enableLocalDatastore()
         
         // Initialize Parse.
-        print("app delegate")
         
         //MARK - this is the real one below
         let configuration = ParseClientConfiguration {

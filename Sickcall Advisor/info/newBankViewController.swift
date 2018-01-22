@@ -16,6 +16,8 @@ import SCLAlertView
 
 class newBankViewController: UIViewController, NVActivityIndicatorViewable {
     
+    let color = Color()
+    
     lazy var accountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 17)
@@ -94,11 +96,9 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
         configureBank()
         
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x159373)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.newColor(0x159373)
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        
-        // Do any additional setup after loading the view.
         
         let userId = PFUser.current()?.objectId
         let query = PFQuery(className: "Advisor")
@@ -106,15 +106,11 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
-                
                 self.first_name = object!["first"] as! String
                 self.last_name = object!["last"] as! String
                 self.dobMonth = object!["birthdayMonth"] as! Int
                 self.dobDay = object!["birthdayDay"] as! Int
                 self.dobYear = object!["birthdayYear"] as! Int
-                
-            } else{
-                //you're not connected to the internet message
             }
         }
         
@@ -164,6 +160,7 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
             "account_number": account,
             "routing_number": routing
             ]
+        
         let url = "https://celecare.herokuapp.com/payments/newAccount"
         Alamofire.request(url, method: .post, parameters: p, encoding: URLEncoding.default).validate().responseJSON { response in switch response.result {
         case .success(let data):
@@ -199,7 +196,6 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
-                
                 object?["connectId"]  = self.connectId
                 object?.saveEventually {
                     (success: Bool, error: Error?) -> Void in
@@ -207,8 +203,6 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
                         self.successView.showSuccess("Account Updated!", subTitle: "Your funds will be deposited to \(self.bankName!) ****\(self.accountLast4!) from now on.")
                     }
                 }
-            } else{
-                //you're not connected to the internet message
             }
         }
     }
@@ -241,16 +235,6 @@ class newBankViewController: UIViewController, NVActivityIndicatorViewable {
             make.top.equalTo(routingLabel.snp.bottom).offset(5)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
-            //make.bottom.equalTo(self.view).offset(-20)
         }
-    }
-    
-    //mich.
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 }

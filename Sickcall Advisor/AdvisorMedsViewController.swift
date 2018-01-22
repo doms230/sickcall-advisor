@@ -36,7 +36,6 @@ class AdvisorMedsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoReuse", for: indexPath) as! AdvisorTableViewCell
         
         cell.selectionStyle = .none
@@ -47,14 +46,12 @@ class AdvisorMedsViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    //TODO: change userId to something proper
     func loadData(){
         let query = PFQuery(className: "_User")
         query.whereKey("objectId", equalTo: self.patientUserId)
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
-                
                 self.vitalTitles.append("Gender")
                 self.vitalContent.append(object?["gender"] as! String)
                 
@@ -82,11 +79,6 @@ class AdvisorMedsViewController: UIViewController, UITableViewDelegate, UITableV
                     self.vitalTitles.append("")
                     self.vitalContent.append(object)
                 }
-                
-                /*self.vitalTitles.append("Heart Rate")
-                self.vitalContent.append(object?["beatsPM"] as! String)
-                self.vitalTitles.append("Breate Rate")
-                self.vitalContent.append(object?["respsPM"] as! String)*/
                 
                 self.vitalTitles.append("Medical History")
                 self.vitalContent.append(object?["medHistory"] as! String)
