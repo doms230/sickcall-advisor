@@ -64,6 +64,7 @@
 		50B67D5161FA22CB78974513 /* Pods_Sickcall_AdvisorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sickcall_AdvisorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51B5DB85F0ADADF3E16D355F /* Pods-Sickcall AdvisorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sickcall AdvisorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sickcall AdvisorTests/Pods-Sickcall AdvisorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5961F3AF2015C9BC001C5282 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5961F3B12015D57F001C5282 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		596E15051F9DA2160049AE8C /* Sickcall Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sickcall Advisor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596E150F1F9DA2170049AE8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		596E15121F9DA2170049AE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		596E14FC1F9DA2160049AE8C = {
 			isa = PBXGroup;
 			children = (
+				5961F3B12015D57F001C5282 /* README.md */,
 				596E15071F9DA2160049AE8C /* Sickcall Advisor */,
 				596E151C1F9DA2170049AE8C /* Sickcall AdvisorTests */,
 				596E15271F9DA2170049AE8C /* Sickcall AdvisorUITests */,
