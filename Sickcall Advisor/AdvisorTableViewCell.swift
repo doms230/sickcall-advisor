@@ -18,7 +18,6 @@ class AdvisorTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     
     //question
-    
     lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
@@ -29,7 +28,6 @@ class AdvisorTableViewCell: UITableViewCell {
     
     
     //dashboard
-    
     lazy var paymentView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -192,10 +190,6 @@ class AdvisorTableViewCell: UITableViewCell {
         return button
     }()
     
-    //new account
-    
-    
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -217,10 +211,6 @@ class AdvisorTableViewCell: UITableViewCell {
                 make.right.equalTo(self).offset(-10)
                 make.bottom.equalTo(self).offset(-10)
             }
-            
-        } else if reuseIdentifier == "contentReuse"{
-
-
             
         } else if reuseIdentifier == "statusReuse"{
             self.addSubview(statusLabel)
@@ -255,9 +245,7 @@ class AdvisorTableViewCell: UITableViewCell {
     
     
     //dashboard
-    
     func configureDashboard(){
-        
         //payments
         self.addSubview(paymentView)
         paymentView.addSubview(paymentsLabel)
@@ -290,7 +278,7 @@ class AdvisorTableViewCell: UITableViewCell {
         }
         
         //status
-       self.addSubview(statusButton)
+        self.addSubview(statusButton)
         self.addSubview(queueLabel)
         
         statusButton.snp.makeConstraints { (make) -> Void in
@@ -309,7 +297,6 @@ class AdvisorTableViewCell: UITableViewCell {
     }
     
     //question
-    
    func configurePatientSubview(){
         self.addSubview(patientImage)
         self.addSubview(patientName)
@@ -329,7 +316,6 @@ class AdvisorTableViewCell: UITableViewCell {
     }
     
     //respond 
-    
     func configureRespondSubview(){
         self.addSubview(seriousLabel)
         self.addSubview(concernLevelSegment)
@@ -382,6 +368,4 @@ class AdvisorTableViewCell: UITableViewCell {
             make.bottom.equalTo(self).offset(-25)
         }
     }
-    
-    //
 }

@@ -19,6 +19,8 @@ import Alamofire
 import SwiftyJSON
 
 class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicatorViewable {
+    let color = Color()
+    
     var baseURL = "https://celecare.herokuapp.com/posts/assignQuestion"
     var chargeURL = "https://celecare.herokuapp.com/payments/captureCharge"
     
@@ -95,7 +97,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         self.textInputbar.bringSubview(toFront: self.textView)
         
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x006a52)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.sickcallGreen()
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
@@ -111,7 +113,6 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
-                
                 self.connectId = object?["connectId"] as! String
             }
         }
@@ -148,20 +149,19 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             
             cell.selectionStyle = .none
             cell.patientImage.kf.setImage(with: URL(string: self.patientUserImage))
-            cell.patientName.textColor = uicolorFromHex(0x180d22)
+            cell.patientName.textColor = color.sickcallBlack()
             cell.patientName.text = self.patientUsername
             
             cell.summaryBody.text = self.summary
-            cell.summaryBody.textColor = uicolorFromHex(0x180d22)
+            cell.summaryBody.textColor = color.sickcallBlack()
             cell.durationBody.text = self.duration
-            cell.durationBody.textColor = uicolorFromHex(0x180d22)
+            cell.durationBody.textColor = color.sickcallBlack()
                     
-            //TODO: Uncomment
             cell.videoButton.addTarget(self, action: #selector(self.loadPlayJaunt(_:)), for: .touchUpInside)
             cell.videoButton.kf.setImage(with: URL(string: self.videoPreview), for: .normal)
-          //  cell.videoImage.kf.setImage(with: URL(string: self.videoPreview))
             
             return cell
+            
         } else if didWatchVideo {
             adCell = tableView.dequeueReusableCell(withIdentifier: "respondReuse", for: indexPath) as! AdvisorTableViewCell
             adCell.selectionStyle = .none
@@ -176,6 +176,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             adCell.commentButton.addTarget(self, action: #selector(self.addCommentAction(_:)), for: .touchUpInside)
             
             return adCell
+            
         } else {
             adCell = tableView.dequeueReusableCell(withIdentifier: "noWatchVideoReuse", for: indexPath) as! AdvisorTableViewCell
             adCell.selectionStyle = .none
@@ -190,6 +191,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             self.present(playerController, animated: true) {
                 self.player.play()
             }
+            
         } else {
             didPressPlay = true
         }
@@ -252,6 +254,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             self.level = "high"
             break
         }
+        
         didChooseConcernLevel = true
         self.tableView?.reloadData()
     }
@@ -262,6 +265,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             self.textView.text = comments
             self.textView.isHidden = false
             self.respondButton.removeFromSuperview()
+            
         } else {
             self.textView.becomeFirstResponder()
         }
@@ -344,7 +348,6 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         query.getFirstObjectInBackground {
             (object: PFObject?, error: Error?) -> Void in
             if error == nil || object != nil {
-                
                 let imageFile: PFFile = object!["Profile"] as! PFFile
                 self.patientUserImage = imageFile.url
                 
@@ -391,7 +394,7 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         viewQuestionButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         viewQuestionButton.titleLabel?.textAlignment = .center
         viewQuestionButton.setTitle("View Question", for: .normal)
-        viewQuestionButton.backgroundColor = uicolorFromHex(0x006a52)
+        viewQuestionButton.backgroundColor = color.sickcallGreen()
         viewQuestionButton.addTarget(self, action: #selector(self.loadPlayJaunt(_:)), for: .touchUpInside)
         self.view.addSubview(viewQuestionButton)
 
@@ -400,9 +403,8 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
         respondButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         respondButton.titleLabel?.textAlignment = .center
         respondButton.setTitle("Respond", for: .normal)
-        respondButton.backgroundColor = uicolorFromHex(0x006a52)
+        respondButton.backgroundColor = color.sickcallGreen()
         respondButton.addTarget(self, action: #selector(self.respondAction(_:)), for: .touchUpInside)
- 
     }
     
     func setUpAlertView(){
@@ -461,13 +463,5 @@ class V2AdvisorQuestionViewController: SLKTextViewController,NVActivityIndicator
             let controller = storyboard.instantiateViewController(withIdentifier: "main")
             self.present(controller, animated: true, completion: nil)
         }
-    }
-    
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 }

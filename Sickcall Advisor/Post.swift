@@ -11,10 +11,6 @@ import Parse
 
 public class Post: PFObject, PFSubclassing {
     
-    /*  override public class func initialize() {
-     // registerSubclass()
-     }*/
-    
     public class func parseClassName() -> String {
         return "Post"
     }

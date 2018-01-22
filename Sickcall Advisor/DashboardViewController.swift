@@ -21,6 +21,8 @@ import UserNotifications
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable {
     
+    let color = Color()
+    
     var medLabel = [String]()
     var medDuration = [String]()
     var userId: String!
@@ -46,7 +48,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var needBankInfo = false
     var didLoad = false
     
-    var payments = 50.00
+    var payments = 0.00
     
     @IBOutlet weak var tableJaunt: UITableView!
         
@@ -58,13 +60,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     lazy var notificationsManager: BulletinManager = {
-        
         let page = PageBulletinItem(title: "Notifications")
         page.image = UIImage(named: "bell")
-        
         page.descriptionText = "Sickcall uses notifications to let you know about important updates, like when you receive a new Sickcall."
         page.actionButtonTitle = "Okay"
-        page.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        page.interfaceFactory.tintColor = color.sickcallGreen()
         page.interfaceFactory.actionButtonTitleColor = .white
         page.isDismissable = true
         page.actionHandler = { (item: PageBulletinItem) in
@@ -82,7 +82,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             })
         }
         return BulletinManager(rootItem: page)
-        
     }()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,7 +104,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         let installation = PFInstallation.current()
-        //replace badge # when someone clicks on notification
         installation?.badge = 0
         installation?.saveInBackground()
         
@@ -121,18 +119,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableJaunt.register(AdvisorTableViewCell.self, forCellReuseIdentifier: "dashboardReuse")
         self.tableJaunt.estimatedRowHeight = 50
         self.tableJaunt.rowHeight = UITableViewAutomaticDimension
-        //self.tableJaunt.backgroundColor = uicolorFromHex(0xe8e6df)
         
         super.viewDidLoad()
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x006a52)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.sickcallGreen()
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
         startAnimating()
         
         loadData()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -156,23 +152,21 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardReuse", for: indexPath) as! AdvisorTableViewCell
         
-       // cell.backgroundColor = uicolorFromHex(0xe8e6df)
         cell.paymentAmount.text = "$\(payments)0"
         
         if !hasProfile{
             cell.queueLabel.text = "Verify that you're a registered nurse."
             cell.statusButton.setTitle("Get Started", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xc0392b)
+            cell.statusButton.backgroundColor = color.newColor(0xc0392b)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 0
             
         } else if !isActive{
             cell.queueLabel.text = "We'll email you via your Sickcall email when we're finished!"
             cell.statusButton.setTitle("RN Verification Pending", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0x2c3e50)
+            cell.statusButton.backgroundColor = color.newColor(0x2c3e50)
             cell.statusButton.setTitleColor(UIColor.white, for: .normal)
             cell.statusButton.isEnabled = false
             cell.statusButton.tag = 0
@@ -180,28 +174,28 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         } else if !isConnected{
             cell.queueLabel.text = "You're almost there!"
             cell.statusButton.setTitle("Complete My Setup", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xf39c12)
+            cell.statusButton.backgroundColor = color.newColor(0xf39c12)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 1
             
         } else if needBankInfo{
             cell.queueLabel.text = "Update your bank account"
             cell.statusButton.setTitle("Link Your Bank", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xc0392b)
+            cell.statusButton.backgroundColor = color.newColor(0xc0392b)
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 2
             
         } else if isOnline{
             cell.queueLabel.text = "You're in queue for a question"
             cell.statusButton.setTitle("Online", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0x006a52)
+            cell.statusButton.backgroundColor = color.sickcallGreen()
             cell.statusButton.setTitleColor(.white, for: .normal)
             cell.statusButton.tag = 3
             
         } else {
             cell.queueLabel.text = "Start answering questions to make money"
             cell.statusButton.setTitle("Go Online", for: .normal)
-            cell.statusButton.backgroundColor = uicolorFromHex(0xe8e6df)
+            cell.statusButton.backgroundColor = color.sickcallBlack()
             cell.statusButton.setTitleColor(.black, for: .normal)
             cell.statusButton.tag = 3
         }
@@ -273,7 +267,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
      
-    //TODO: change userId to something proper
     func loadData(){
         let userId = PFUser.current()?.objectId
         let query = PFQuery(className: "Advisor")
@@ -305,7 +298,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             } else{
                 self.tableJaunt.reloadData()
                 self.stopAnimating()
-                //you're not connected to the internet message
             }
         }
     }
@@ -319,9 +311,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         Alamofire.request(url, parameters: p, encoding: URLEncoding.default).validate().responseJSON { response in switch response.result {
         case .success(let data):
             let json = JSON(data)
-            print("JSON: \(json)")
             self.stopAnimating()
             self.didLoad = true
+            
             //can't get status code for some reason
             if let status = json["statusCode"].int{
                 print(status)
@@ -348,16 +340,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getTransfers(){
-        
         let query = PFQuery(className:"Post")
         query.whereKey("advisorUserId", equalTo: PFUser.current()!.objectId!)
         query.whereKey("isAnswered", equalTo: true)
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
                 if let objects = objects {
                     for object in objects {
                         let weds = self.get(direction: .Previous, "Wednesday", considerToday: false)
@@ -368,14 +356,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                             self.payments = self.payments + 5.00
                         }
                     }
-                    // print(self.unAnsweredQuestionTitle[0])
-                    
                     self.tableJaunt.reloadData()
-                    
                 }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!)")
             }
         }
     }
@@ -419,16 +401,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let nextDateComponent = NSDateComponents()
         nextDateComponent.weekday = nextWeekDayIndex
         
-        
         let date = calendar.nextDate(after: today as Date, matching: nextDateComponent as DateComponents, options: direction.calendarOptions)
         return date! as NSDate
-    }
-    
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 }

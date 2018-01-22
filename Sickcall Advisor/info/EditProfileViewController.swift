@@ -16,6 +16,8 @@ import BulletinBoard
 
 class EditProfileViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,NVActivityIndicatorViewable {
     
+    let color = Color()
+    
     let screenSize: CGRect = UIScreen.main.bounds
     var nameString: String!
     
@@ -45,19 +47,16 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         button.titleLabel?.textAlignment = .left
         button.setTitle("+", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        //label.numberOfLines = 0
         return button
     }()
     
     lazy var selfieManager: BulletinManager = {
-        
         let selfiePage = PageBulletinItem(title: "Make Your Selfie Clear")
         selfiePage.image = UIImage(named: "selfie")
-        
         selfiePage.descriptionText = "We want your Sickcallers to see that you're a real person!"
         selfiePage.shouldCompactDescriptionText = true
         selfiePage.actionButtonTitle = "Okay"
-        selfiePage.interfaceFactory.tintColor = uicolorFromHex(0x006a52)// green
+        selfiePage.interfaceFactory.tintColor = color.sickcallGreen()
         selfiePage.interfaceFactory.actionButtonTitleColor = .white
         selfiePage.isDismissable = true
         selfiePage.actionHandler = { (item: PageBulletinItem) in
@@ -116,13 +115,12 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         username.backgroundColor = .clear
         
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x006a52)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.sickcallGreen()
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
 
     @objc func updateAction(_ sender: UIBarButtonItem) {
-        
         if pictureUploaded{
             startAnimating()
             let query = PFQuery(className:"_User")
@@ -187,13 +185,5 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     @objc func editProfile(_ sender: UIButton) {
         self.selfieManager.prepare()
         self.selfieManager.presentBulletin(above: self)
-    }
-    
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 }

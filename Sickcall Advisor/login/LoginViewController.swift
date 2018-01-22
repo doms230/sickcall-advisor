@@ -13,6 +13,8 @@ import NVActivityIndicatorView
 
 class LoginViewController: UIViewController,NVActivityIndicatorViewable {
     
+    let color = Color()
+    
     var valUsername = false
     var valPassword = false
     var valEmail = false
@@ -56,7 +58,6 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
         button.titleLabel?.textAlignment = .right
         button.setTitle("Sign In", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        //label.numberOfLines = 0
         return button
     }()
     
@@ -102,7 +103,7 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
         emailText.becomeFirstResponder()
         
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x006a52)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.sickcallGreen()
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
@@ -122,9 +123,7 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
     }
     
     func validateUsername() ->Bool{
-        
         //Validate username
-        
         if emailText.text!.isEmpty{
             
             emailText.attributedPlaceholder = NSAttributedString(string:"Field required",
@@ -134,11 +133,11 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
         } else{
             valUsername = true
         }
+        
         return valUsername
     }
     
     func validatePassword() -> Bool{
-        
         if passwordText.text!.isEmpty{
             passwordText.attributedPlaceholder = NSAttributedString(string:"Field required",
                                                                 attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
@@ -152,7 +151,6 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
     }
     
     func returningUser( password: String, username: String){
-        
         startAnimating()
         
         let userJaunt = username.trimmingCharacters(
@@ -198,6 +196,7 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
                 if objects?.count != 0{
                     PFUser.requestPasswordResetForEmail(inBackground: "\(txt.text!)")
                     SCLAlertView().showSuccess("Check your inbox", subTitle: "Click on the link from noreply@sickcallhealth.com")
+                    
                 } else {
                     SCLAlertView().showNotice("Oops", subTitle: "Couldn't find an email associated with \(txt.text!)")
                 }
@@ -205,19 +204,9 @@ class LoginViewController: UIViewController,NVActivityIndicatorViewable {
         }
     }
     
-    
     @objc func exitAction(_ sender: UIBarButtonItem){
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "welcome")
         self.present(initialViewController, animated: true, completion: nil)
     }
-    
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
-    }
-    
 }

@@ -57,7 +57,6 @@ class NewSSNViewController: UIViewController {
         
         configureSSN()
         ssnText.becomeFirstResponder()
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,7 +96,6 @@ class NewSSNViewController: UIViewController {
             make.top.equalTo(ssnText.snp.bottom).offset(5)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
-          //  make.bottom.equalTo(self.view).offset(-20)
         }
     }
     
@@ -117,5 +115,4 @@ class NewSSNViewController: UIViewController {
         }
         return isValidated
     }
-    
 }

@@ -1,8 +1,8 @@
 //NewProfileViewController.swift
 //Sickcall
 //
-//  Created by Dom Smith on 7/2/17.
-//  Copyright © 2017 Sickcall LLC All rights reserved.
+// Created by Dom Smith on 7/2/17.
+// Copyright © 2017 Sickcall LLC All rights reserved.
 
 
 import UIKit
@@ -12,6 +12,8 @@ import SCLAlertView
 import SnapKit
 
 class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate,NVActivityIndicatorViewable{
+    
+    let color = Color()
     
     let screenSize: CGRect = UIScreen.main.bounds
 
@@ -31,7 +33,6 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
         button.titleLabel?.textAlignment = .left
         button.setTitle("+", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        //label.numberOfLines = 0
         return button
     }()
         
@@ -39,7 +40,6 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
     var emailString: String!
     var passwordString: String!
     var isSwitchOn: Bool! 
-    //image picker stuff
     
     var uploadedImage: PFFile!
     
@@ -74,11 +74,10 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
             make.top.equalTo(image.snp.bottom).offset(10)
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
-            //make.bottom.equalTo(self.view).offset(-20)
         }
         
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x006a52)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.sickcallGreen()
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
@@ -111,9 +110,6 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
         user.signUpInBackground{ (succeeded: Bool, error: Error?) -> Void in
             self.stopAnimating()
             if error != nil {
-                // let errorString = erro_userInfofo["error"] as? NSString
-                //
-                print(error!)
                 SCLAlertView().showError("Oops", subTitle: "We couldn't sign you up. Check internet connection and try again")
                 
             } else {
@@ -135,18 +131,11 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
         
         dismiss(animated: true, completion: nil)
         
-        //userImage.setTitle("", for: .normal)
         image.setBackgroundImage(chosenImage, for: .normal)
-        //tableJaunt.reloadData()
         
         let proPic = UIImageJPEGRepresentation(chosenImage, 0.5)
         uploadedImage = PFFile(name: "profile_ios.jpeg", data: proPic!)
-        uploadedImage?.saveInBackground {
-            (success: Bool, error: Error?) -> Void in
-            if (success) {
-                
-            }
-        }
+        uploadedImage?.saveInBackground()
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -157,13 +146,5 @@ class NewProfileViewController: UIViewController ,UIImagePickerControllerDelegat
         imagePicker.allowsEditing = false
         imagePicker.sourceType =  .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
 }

@@ -16,7 +16,9 @@ import NVActivityIndicatorView
 import SCLAlertView
 
 class BankTableViewController: UITableViewController, NVActivityIndicatorViewable {
-        
+    
+    let color = Color()
+    
     //payments
     var baseURL = "https://celecare.herokuapp.com/payments/bank"
 
@@ -30,7 +32,7 @@ class BankTableViewController: UITableViewController, NVActivityIndicatorViewabl
         super.viewDidLoad()
                 
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScaleMultiple
-        NVActivityIndicatorView.DEFAULT_COLOR = uicolorFromHex(0x159373)
+        NVActivityIndicatorView.DEFAULT_COLOR = color.newColor(0x159373)
         NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
@@ -72,18 +74,15 @@ class BankTableViewController: UITableViewController, NVActivityIndicatorViewabl
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 2
     }
     
     @objc func nextAction(_ sender: UIBarButtonItem){
         //loading view
-        
         if sender.tag == 0{
             accountTextField.resignFirstResponder()
             routingTextField.resignFirstResponder()
@@ -163,13 +162,4 @@ class BankTableViewController: UITableViewController, NVActivityIndicatorViewabl
             }
         }
     }
-    
-    func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
-    }
-    
 }

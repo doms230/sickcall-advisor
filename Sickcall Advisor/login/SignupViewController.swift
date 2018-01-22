@@ -15,7 +15,6 @@ import SnapKit
 class SignupViewController: UIViewController,NVActivityIndicatorViewable {
 
     //propic
-    
     var uploadedImage: PFFile!
     
     //UI components
@@ -58,7 +57,7 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        //print(numberToSend[0])
+        
         let exitItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(SignupViewController.exitAction(_:)))
         self.navigationItem.leftBarButtonItem = exitItem
         
@@ -97,22 +96,12 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         let proPic = UIImageJPEGRepresentation(UIImage(named: "appy")!, 0.5)
         uploadedImage = PFFile(name: "defaultProfile_ios.jpeg", data: proPic!)
         uploadedImage?.saveInBackground()
-        // Do any additional setup after loading the view.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let desti = segue.destination as! NewProfileViewController
-        
-        //user info
-        desti.emailString = emailString
-        desti.passwordString = passwordText.text!
-        desti.isSwitchOn = isSwitchOn
-    }*/
     
     @objc func next(_ sender: UIBarButtonItem){
         emailText.resignFirstResponder()
@@ -122,23 +111,9 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         
         if validateEmail() && validatePassword(){
             startAnimating()
-            //self.performSegue(withIdentifier: "showNewProfile", sender: self)
-            /*let emailQuery = PFQuery(className: "_User")
-            emailQuery.whereKey("email", equalTo: self.emailString )
-            emailQuery.findObjectsInBackground{
-                (objects: [PFObject]?, error: Error?) -> Void in
-                self.stopAnimating()
-                if objects?.count == 0{
-                    self.performSegue(withIdentifier: "showNewProfile", sender: self)
-                    
-                } else {
-                    SCLAlertView().showError("Oops", subTitle: "Email already in use")
-                }
-            }*/
             
             newUser(username: emailString!, password: passwordText.text!, email: emailString!, imageFile:
                 uploadedImage)
-            
         }
     }
     
@@ -163,9 +138,6 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         user.signUpInBackground{ (succeeded: Bool, error: Error?) -> Void in
             self.stopAnimating()
             if error != nil {
-                // let errorString = erro_userInfofo["error"] as? NSString
-                //
-                print(error!)
                 SCLAlertView().showError("Oops", subTitle: "Email already taken.")
                 
             } else {
@@ -182,7 +154,6 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
     }
     
     //MARK: Validate jaunts
-    
     func validatePassword() -> Bool{
         if passwordText.text!.isEmpty{
             passwordText.attributedPlaceholder = NSAttributedString(string:"Field required",
@@ -190,7 +161,6 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
             valPassword = false
             
         } else{
-            print("true")
             valPassword = true
         }
         
@@ -222,6 +192,7 @@ class SignupViewController: UIViewController,NVActivityIndicatorViewable {
         } else{
             valEmail = true
         }
+        
         return valEmail
     }
     

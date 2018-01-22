@@ -260,7 +260,7 @@ class IDViewController: UIViewController, NVActivityIndicatorViewable {
             ssnText.attributedPlaceholder = NSAttributedString(string:"Field required",
                                                                attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
             
-        } else if (ssnText.text?.characters.count)! != 4{
+        } else if (ssnText.text?.count)! != 4{
             ssnText.text = ""
             ssnText.attributedPlaceholder = NSAttributedString(string:"last 4 digits of your social security number",
                                                                attributes:[NSAttributedStringKey.foregroundColor: UIColor.red])
