@@ -112,7 +112,7 @@ External Libraries made Sickcall so much better. Thank you. Besides Google Searc
 ### [Alamofire](https://github.com/Alamofire/Alamofire) & [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 * Alamofire and SwiftyJSON were using to easily communicate with my Node.js API.
 
-The example code below takes the Sickcall Advisor's bank information and securely pushes it to the Node.js API to be processed. A response is sent back in JSON. 
+The example code below takes the Sickcall Advisor's bank information and securely pushes it to Sickcall's REST API to be processed. A response is sent back in JSON. 
 ```swift 
     @objc func nextAction(_ sender: UIBarButtonItem){
         //loading view
@@ -279,7 +279,6 @@ The code snippet below queries the Sickcall object, then appends the Sickcall Ad
 
                     //The url is nested 3 layers deep into the result so it's pretty messy
                     if let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
-
                         if let url = URL(string: imageURL){
                             if let data = NSData(contentsOf: url){
                             self.image = UIImage(data: data as Data)
@@ -316,6 +315,7 @@ The code snippet below queries the Sickcall object, then appends the Sickcall Ad
                         }
                     }
                 })
+                
             } else {
             self.stopAnimating()
             self.goHome()
