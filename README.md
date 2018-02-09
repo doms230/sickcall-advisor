@@ -1,10 +1,17 @@
 #  Sickcall Advisor
 
 ### Health answers from U.S. Registered Nurses [Nurse advisor version]
+Sickcall advisor is the app that the nurses used to answer questions assigned to them. 
+
+To reply, the nurses are required to watch the video, choose between a low, medium, or high serious level, and include some helpful information based on their symptoms. 
+
+The nurses weren't aloud to diagnose, but simply provide their profressional opinion. The Sickcallers also understood this before asking their question. 
 
 Features
 ======
 * View and reply to Sickcalls
+* Onboard new nurse advisors 
+* create and update bank payouts 
 
 Demo: 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=DuHmLggVOpY
